@@ -211,7 +211,7 @@ Each round presents:
 
 ---
 
-**Status**: ✅ v0.1 Released - Functional Game Available!  
+**Status**: ✅ v1.0 Released - Complete Visual Novel Game!  
 **Last Updated**: January 2025  
 **Target Platform**: itch.io  
 **License**: MIT  
@@ -219,13 +219,21 @@ Each round presents:
 ## 🎮 Play Now
 - **Local**: Open `index.html` in your browser
 - **Live Demo**: `http://localhost:8000` (with Python server)
-- **Development**: Check `examples/` for debug versions
+- **Development**: Check `examples/` for test versions
 
-## 📦 v0.1 Release Notes
-- Fully functional kanji quiz game
-- 8 JLPT N5 kanji with multiple choice questions
-- JRPG-style dialogue system
-- Responsive design for all devices
-- Ready for itch.io deployment
+## 🎨 v1.0 Release Notes - Visual Novel Style
+- **NEW**: Harmonized visual layout with character portraits
+- **NEW**: Custom 768x1080px character art integration
+- **NEW**: Picture frame system for character display
+- **Enhanced**: 20 JLPT N5 kanji with improved quiz system
+- **Enhanced**: JRPG-style dialogue system with visual consistency
+- **Enhanced**: Responsive design optimized for all devices
+- **Ready**: Fully prepared for itch.io deployment
+
+### 🖼️ Character Art Integration
+- Professional picture frame display
+- Dynamic character states (Normal/Success/Failure)
+- Harmonized color scheme across all UI elements
+- Mobile-responsive portrait layout
 
 See [CHANGELOG.md](CHANGELOG.md) for detailed release notes.

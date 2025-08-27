@@ -1,291 +1,2094 @@
 {
   "metadata": {
-    "version": "1.0",
-    "lastUpdated": "2025-01-14",
-    "totalKanji": 30,
-    "source": "JLPT N5 Official List",
-    "description": "Basic kanji required for JLPT N5 level"
+    "version": "2.0",
+    "lastUpdated": "2025-08-27T02:05:13.110Z",
+    "cacheVersion": 1756260313109,
+    "totalKanji": 63,
+    "source": "JLPT N5 Official List + jlpt_n5_kanji.md",
+    "description": "Complete kanji set required for JLPT N5 level including all from markdown file"
   },
   "kanji": [
     {
       "id": 1,
       "character": "一",
-      "meanings": ["one", "first"],
-      "kunyomi": ["ひと", "ひとつ"],
-      "onyomi": ["イチ", "イツ"],
+      "meanings": [
+        "one",
+        "first"
+      ],
+      "kunyomi": [
+        "ひと",
+        "ひとつ"
+      ],
+      "onyomi": [
+        "イチ",
+        "イツ"
+      ],
       "strokeCount": 1,
       "examples": [
-        {"word": "一つ", "reading": "ひとつ", "meaning": "one thing"},
-        {"word": "一人", "reading": "ひとり", "meaning": "one person"},
-        {"word": "一日", "reading": "いちにち", "meaning": "one day"}
+        {
+          "word": "一つ",
+          "reading": "ひとつ",
+          "meaning": "one thing"
+        },
+        {
+          "word": "一人",
+          "reading": "ひとり",
+          "meaning": "one person"
+        },
+        {
+          "word": "一日",
+          "reading": "いちにち",
+          "meaning": "one day"
+        }
       ],
       "difficulty": "easy"
     },
     {
       "id": 2,
       "character": "二",
-      "meanings": ["two"],
-      "kunyomi": ["ふた", "ふたつ"],
-      "onyomi": ["ニ"],
+      "meanings": [
+        "two"
+      ],
+      "kunyomi": [
+        "ふた",
+        "ふたつ"
+      ],
+      "onyomi": [
+        "ニ"
+      ],
       "strokeCount": 2,
       "examples": [
-        {"word": "二つ", "reading": "ふたつ", "meaning": "two things"},
-        {"word": "二人", "reading": "ふたり", "meaning": "two people"},
-        {"word": "二日", "reading": "ふつか", "meaning": "two days, 2nd day"}
+        {
+          "word": "二つ",
+          "reading": "ふたつ",
+          "meaning": "two things"
+        },
+        {
+          "word": "二人",
+          "reading": "ふたり",
+          "meaning": "two people"
+        },
+        {
+          "word": "二日",
+          "reading": "ふつか",
+          "meaning": "two days, 2nd day"
+        }
       ],
       "difficulty": "easy"
     },
     {
       "id": 3,
       "character": "三",
-      "meanings": ["three"],
-      "kunyomi": ["み", "みつ", "みっつ"],
-      "onyomi": ["サン"],
+      "meanings": [
+        "three"
+      ],
+      "kunyomi": [
+        "み",
+        "みつ",
+        "みっつ"
+      ],
+      "onyomi": [
+        "サン"
+      ],
       "strokeCount": 3,
       "examples": [
-        {"word": "三つ", "reading": "みっつ", "meaning": "three things"},
-        {"word": "三人", "reading": "さんにん", "meaning": "three people"},
-        {"word": "三日", "reading": "みっか", "meaning": "three days, 3rd day"}
+        {
+          "word": "三つ",
+          "reading": "みっつ",
+          "meaning": "three things"
+        },
+        {
+          "word": "三人",
+          "reading": "さんにん",
+          "meaning": "three people"
+        },
+        {
+          "word": "三日",
+          "reading": "みっか",
+          "meaning": "three days, 3rd day"
+        }
       ],
       "difficulty": "easy"
     },
     {
       "id": 4,
       "character": "四",
-      "meanings": ["four"],
-      "kunyomi": ["よ", "よん", "よつ", "よっつ"],
-      "onyomi": ["シ"],
+      "meanings": [
+        "four"
+      ],
+      "kunyomi": [
+        "よ",
+        "よん",
+        "よつ",
+        "よっつ"
+      ],
+      "onyomi": [
+        "シ"
+      ],
       "strokeCount": 5,
       "examples": [
-        {"word": "四つ", "reading": "よっつ", "meaning": "four things"},
-        {"word": "四人", "reading": "よにん", "meaning": "four people"},
-        {"word": "四日", "reading": "よっか", "meaning": "four days, 4th day"}
+        {
+          "word": "四つ",
+          "reading": "よっつ",
+          "meaning": "four things"
+        },
+        {
+          "word": "四人",
+          "reading": "よにん",
+          "meaning": "four people"
+        },
+        {
+          "word": "四日",
+          "reading": "よっか",
+          "meaning": "four days, 4th day"
+        }
       ],
       "difficulty": "easy"
     },
     {
       "id": 5,
       "character": "五",
-      "meanings": ["five"],
-      "kunyomi": ["いつ", "いつつ"],
-      "onyomi": ["ゴ"],
+      "meanings": [
+        "five"
+      ],
+      "kunyomi": [
+        "いつ",
+        "いつつ"
+      ],
+      "onyomi": [
+        "ゴ"
+      ],
       "strokeCount": 4,
       "examples": [
-        {"word": "五つ", "reading": "いつつ", "meaning": "five things"},
-        {"word": "五人", "reading": "ごにん", "meaning": "five people"},
-        {"word": "五日", "reading": "いつか", "meaning": "five days, 5th day"}
+        {
+          "word": "五つ",
+          "reading": "いつつ",
+          "meaning": "five things"
+        },
+        {
+          "word": "五人",
+          "reading": "ごにん",
+          "meaning": "five people"
+        },
+        {
+          "word": "五日",
+          "reading": "いつか",
+          "meaning": "five days, 5th day"
+        }
       ],
       "difficulty": "easy"
     },
     {
       "id": 6,
       "character": "人",
-      "meanings": ["person", "people"],
-      "kunyomi": ["ひと"],
-      "onyomi": ["ジン", "ニン"],
+      "meanings": [
+        "person",
+        "people"
+      ],
+      "kunyomi": [
+        "ひと"
+      ],
+      "onyomi": [
+        "ジン",
+        "ニン"
+      ],
       "strokeCount": 2,
       "examples": [
-        {"word": "人", "reading": "ひと", "meaning": "person"},
-        {"word": "日本人", "reading": "にほんじん", "meaning": "Japanese person"},
-        {"word": "外国人", "reading": "がいこくじん", "meaning": "foreigner"}
+        {
+          "word": "人",
+          "reading": "ひと",
+          "meaning": "person"
+        },
+        {
+          "word": "日本人",
+          "reading": "にほんじん",
+          "meaning": "Japanese person"
+        },
+        {
+          "word": "外国人",
+          "reading": "がいこくじん",
+          "meaning": "foreigner"
+        }
       ],
       "difficulty": "easy"
     },
     {
       "id": 7,
       "character": "日",
-      "meanings": ["day", "sun"],
-      "kunyomi": ["ひ", "か"],
-      "onyomi": ["ニチ", "ジツ"],
+      "meanings": [
+        "day",
+        "sun"
+      ],
+      "kunyomi": [
+        "ひ",
+        "か"
+      ],
+      "onyomi": [
+        "ニチ",
+        "ジツ"
+      ],
       "strokeCount": 4,
       "examples": [
-        {"word": "日", "reading": "ひ", "meaning": "day, sun"},
-        {"word": "今日", "reading": "きょう", "meaning": "today"},
-        {"word": "毎日", "reading": "まいにち", "meaning": "every day"}
+        {
+          "word": "日",
+          "reading": "ひ",
+          "meaning": "day, sun"
+        },
+        {
+          "word": "今日",
+          "reading": "きょう",
+          "meaning": "today"
+        },
+        {
+          "word": "毎日",
+          "reading": "まいにち",
+          "meaning": "every day"
+        }
       ],
       "difficulty": "medium"
     },
     {
       "id": 8,
       "character": "月",
-      "meanings": ["month", "moon"],
-      "kunyomi": ["つき"],
-      "onyomi": ["ゲツ", "ガツ"],
+      "meanings": [
+        "month",
+        "moon"
+      ],
+      "kunyomi": [
+        "つき"
+      ],
+      "onyomi": [
+        "ゲツ",
+        "ガツ"
+      ],
       "strokeCount": 4,
       "examples": [
-        {"word": "月", "reading": "つき", "meaning": "month, moon"},
-        {"word": "今月", "reading": "こんげつ", "meaning": "this month"},
-        {"word": "来月", "reading": "らいげつ", "meaning": "next month"}
+        {
+          "word": "月",
+          "reading": "つき",
+          "meaning": "month, moon"
+        },
+        {
+          "word": "今月",
+          "reading": "こんげつ",
+          "meaning": "this month"
+        },
+        {
+          "word": "来月",
+          "reading": "らいげつ",
+          "meaning": "next month"
+        }
       ],
       "difficulty": "medium"
     },
     {
       "id": 9,
       "character": "水",
-      "meanings": ["water"],
-      "kunyomi": ["みず"],
-      "onyomi": ["スイ"],
+      "meanings": [
+        "water"
+      ],
+      "kunyomi": [
+        "みず"
+      ],
+      "onyomi": [
+        "スイ"
+      ],
       "strokeCount": 4,
       "examples": [
-        {"word": "水", "reading": "みず", "meaning": "water"},
-        {"word": "水曜日", "reading": "すいようび", "meaning": "Wednesday"},
-        {"word": "お水", "reading": "おみず", "meaning": "water (polite)"}
+        {
+          "word": "水",
+          "reading": "みず",
+          "meaning": "water"
+        },
+        {
+          "word": "水曜日",
+          "reading": "すいようび",
+          "meaning": "Wednesday"
+        },
+        {
+          "word": "お水",
+          "reading": "おみず",
+          "meaning": "water (polite)"
+        }
       ],
       "difficulty": "medium"
     },
     {
       "id": 10,
       "character": "火",
-      "meanings": ["fire"],
-      "kunyomi": ["ひ"],
-      "onyomi": ["カ"],
+      "meanings": [
+        "fire"
+      ],
+      "kunyomi": [
+        "ひ"
+      ],
+      "onyomi": [
+        "カ"
+      ],
       "strokeCount": 4,
       "examples": [
-        {"word": "火", "reading": "ひ", "meaning": "fire"},
-        {"word": "火曜日", "reading": "かようび", "meaning": "Tuesday"},
-        {"word": "花火", "reading": "はなび", "meaning": "fireworks"}
+        {
+          "word": "火",
+          "reading": "ひ",
+          "meaning": "fire"
+        },
+        {
+          "word": "火曜日",
+          "reading": "かようび",
+          "meaning": "Tuesday"
+        },
+        {
+          "word": "花火",
+          "reading": "はなび",
+          "meaning": "fireworks"
+        }
       ],
       "difficulty": "medium"
     },
     {
       "id": 11,
       "character": "木",
-      "meanings": ["tree", "wood"],
-      "kunyomi": ["き"],
-      "onyomi": ["モク", "ボク"],
+      "meanings": [
+        "tree",
+        "wood"
+      ],
+      "kunyomi": [
+        "き"
+      ],
+      "onyomi": [
+        "モク",
+        "ボク"
+      ],
       "strokeCount": 4,
       "examples": [
-        {"word": "木", "reading": "き", "meaning": "tree, wood"},
-        {"word": "木曜日", "reading": "もくようび", "meaning": "Thursday"},
-        {"word": "大木", "reading": "たいぼく", "meaning": "big tree"}
+        {
+          "word": "木",
+          "reading": "き",
+          "meaning": "tree, wood"
+        },
+        {
+          "word": "木曜日",
+          "reading": "もくようび",
+          "meaning": "Thursday"
+        },
+        {
+          "word": "大木",
+          "reading": "たいぼく",
+          "meaning": "big tree"
+        }
       ],
       "difficulty": "medium"
     },
     {
       "id": 12,
       "character": "金",
-      "meanings": ["gold", "money"],
-      "kunyomi": ["かね"],
-      "onyomi": ["キン"],
+      "meanings": [
+        "gold",
+        "money"
+      ],
+      "kunyomi": [
+        "かね"
+      ],
+      "onyomi": [
+        "キン"
+      ],
       "strokeCount": 8,
       "examples": [
-        {"word": "金", "reading": "かね", "meaning": "money"},
-        {"word": "金曜日", "reading": "きんようび", "meaning": "Friday"},
-        {"word": "お金", "reading": "おかね", "meaning": "money"}
+        {
+          "word": "金",
+          "reading": "かね",
+          "meaning": "money"
+        },
+        {
+          "word": "金曜日",
+          "reading": "きんようび",
+          "meaning": "Friday"
+        },
+        {
+          "word": "お金",
+          "reading": "おかね",
+          "meaning": "money"
+        }
       ],
       "difficulty": "medium"
     },
     {
       "id": 13,
       "character": "土",
-      "meanings": ["earth", "soil"],
-      "kunyomi": ["つち"],
-      "onyomi": ["ド", "ト"],
+      "meanings": [
+        "earth",
+        "soil"
+      ],
+      "kunyomi": [
+        "つち"
+      ],
+      "onyomi": [
+        "ド",
+        "ト"
+      ],
       "strokeCount": 3,
       "examples": [
-        {"word": "土", "reading": "つち", "meaning": "earth, soil"},
-        {"word": "土曜日", "reading": "どようび", "meaning": "Saturday"},
-        {"word": "土地", "reading": "とち", "meaning": "land"}
+        {
+          "word": "土",
+          "reading": "つち",
+          "meaning": "earth, soil"
+        },
+        {
+          "word": "土曜日",
+          "reading": "どようび",
+          "meaning": "Saturday"
+        },
+        {
+          "word": "土地",
+          "reading": "とち",
+          "meaning": "land"
+        }
       ],
       "difficulty": "medium"
     },
     {
       "id": 14,
       "character": "大",
-      "meanings": ["big", "large"],
-      "kunyomi": ["おお", "おおきい"],
-      "onyomi": ["ダイ", "タイ"],
+      "meanings": [
+        "big",
+        "large"
+      ],
+      "kunyomi": [
+        "おお",
+        "おおきい"
+      ],
+      "onyomi": [
+        "ダイ",
+        "タイ"
+      ],
       "strokeCount": 3,
       "examples": [
-        {"word": "大きい", "reading": "おおきい", "meaning": "big"},
-        {"word": "大学", "reading": "だいがく", "meaning": "university"},
-        {"word": "大人", "reading": "おとな", "meaning": "adult"}
+        {
+          "word": "大きい",
+          "reading": "おおきい",
+          "meaning": "big"
+        },
+        {
+          "word": "大学",
+          "reading": "だいがく",
+          "meaning": "university"
+        },
+        {
+          "word": "大人",
+          "reading": "おとな",
+          "meaning": "adult"
+        }
       ],
       "difficulty": "easy"
     },
     {
       "id": 15,
       "character": "小",
-      "meanings": ["small", "little"],
-      "kunyomi": ["ちい", "こ"],
-      "onyomi": ["ショウ"],
+      "meanings": [
+        "small",
+        "little"
+      ],
+      "kunyomi": [
+        "ちい",
+        "こ"
+      ],
+      "onyomi": [
+        "ショウ"
+      ],
       "strokeCount": 3,
       "examples": [
-        {"word": "小さい", "reading": "ちいさい", "meaning": "small"},
-        {"word": "小学校", "reading": "しょうがっこう", "meaning": "elementary school"},
-        {"word": "小鳥", "reading": "ことり", "meaning": "small bird"}
+        {
+          "word": "小さい",
+          "reading": "ちいさい",
+          "meaning": "small"
+        },
+        {
+          "word": "小学校",
+          "reading": "しょうがっこう",
+          "meaning": "elementary school"
+        },
+        {
+          "word": "小鳥",
+          "reading": "ことり",
+          "meaning": "small bird"
+        }
       ],
       "difficulty": "easy"
     },
     {
       "id": 16,
       "character": "中",
-      "meanings": ["middle", "inside"],
-      "kunyomi": ["なか"],
-      "onyomi": ["チュウ"],
+      "meanings": [
+        "middle",
+        "inside"
+      ],
+      "kunyomi": [
+        "なか"
+      ],
+      "onyomi": [
+        "チュウ"
+      ],
       "strokeCount": 4,
       "examples": [
-        {"word": "中", "reading": "なか", "meaning": "inside, middle"},
-        {"word": "中学校", "reading": "ちゅうがっこう", "meaning": "middle school"},
-        {"word": "中国", "reading": "ちゅうごく", "meaning": "China"}
+        {
+          "word": "中",
+          "reading": "なか",
+          "meaning": "inside, middle"
+        },
+        {
+          "word": "中学校",
+          "reading": "ちゅうがっこう",
+          "meaning": "middle school"
+        },
+        {
+          "word": "中国",
+          "reading": "ちゅうごく",
+          "meaning": "China"
+        }
       ],
       "difficulty": "medium"
     },
     {
       "id": 17,
       "character": "上",
-      "meanings": ["up", "above"],
-      "kunyomi": ["うえ", "あ"],
-      "onyomi": ["ジョウ"],
+      "meanings": [
+        "up",
+        "above"
+      ],
+      "kunyomi": [
+        "うえ",
+        "あ"
+      ],
+      "onyomi": [
+        "ジョウ"
+      ],
       "strokeCount": 3,
       "examples": [
-        {"word": "上", "reading": "うえ", "meaning": "up, above"},
-        {"word": "上手", "reading": "じょうず", "meaning": "skillful"},
-        {"word": "机の上", "reading": "つくえのうえ", "meaning": "on the desk"}
+        {
+          "word": "上",
+          "reading": "うえ",
+          "meaning": "up, above"
+        },
+        {
+          "word": "上手",
+          "reading": "じょうず",
+          "meaning": "skillful"
+        },
+        {
+          "word": "机の上",
+          "reading": "つくえのうえ",
+          "meaning": "on the desk"
+        }
       ],
       "difficulty": "medium"
     },
     {
       "id": 18,
       "character": "下",
-      "meanings": ["down", "below"],
-      "kunyomi": ["した", "しも", "お"],
-      "onyomi": ["カ", "ゲ"],
+      "meanings": [
+        "down",
+        "below"
+      ],
+      "kunyomi": [
+        "した",
+        "しも",
+        "お"
+      ],
+      "onyomi": [
+        "カ",
+        "ゲ"
+      ],
       "strokeCount": 3,
       "examples": [
-        {"word": "下", "reading": "した", "meaning": "down, below"},
-        {"word": "下手", "reading": "へた", "meaning": "unskillful"},
-        {"word": "机の下", "reading": "つくえのした", "meaning": "under the desk"}
+        {
+          "word": "下",
+          "reading": "した",
+          "meaning": "down, below"
+        },
+        {
+          "word": "下手",
+          "reading": "へた",
+          "meaning": "unskillful"
+        },
+        {
+          "word": "机の下",
+          "reading": "つくえのした",
+          "meaning": "under the desk"
+        }
       ],
       "difficulty": "medium"
     },
     {
       "id": 19,
       "character": "本",
-      "meanings": ["book", "origin"],
-      "kunyomi": ["もと"],
-      "onyomi": ["ホン"],
+      "meanings": [
+        "book",
+        "origin"
+      ],
+      "kunyomi": [
+        "もと"
+      ],
+      "onyomi": [
+        "ホン"
+      ],
       "strokeCount": 5,
       "examples": [
-        {"word": "本", "reading": "ほん", "meaning": "book"},
-        {"word": "日本", "reading": "にほん", "meaning": "Japan"},
-        {"word": "三本", "reading": "さんぼん", "meaning": "three long objects"}
+        {
+          "word": "本",
+          "reading": "ほん",
+          "meaning": "book"
+        },
+        {
+          "word": "日本",
+          "reading": "にほん",
+          "meaning": "Japan"
+        },
+        {
+          "word": "三本",
+          "reading": "さんぼん",
+          "meaning": "three long objects"
+        }
       ],
       "difficulty": "medium"
     },
     {
       "id": 20,
       "character": "年",
-      "meanings": ["year"],
-      "kunyomi": ["とし"],
-      "onyomi": ["ネン"],
+      "meanings": [
+        "year"
+      ],
+      "kunyomi": [
+        "とし"
+      ],
+      "onyomi": [
+        "ネン"
+      ],
       "strokeCount": 6,
       "examples": [
-        {"word": "年", "reading": "とし", "meaning": "year, age"},
-        {"word": "今年", "reading": "ことし", "meaning": "this year"},
-        {"word": "来年", "reading": "らいねん", "meaning": "next year"}
+        {
+          "word": "年",
+          "reading": "とし",
+          "meaning": "year, age"
+        },
+        {
+          "word": "今年",
+          "reading": "ことし",
+          "meaning": "this year"
+        },
+        {
+          "word": "来年",
+          "reading": "らいねん",
+          "meaning": "next year"
+        }
       ],
       "difficulty": "medium"
+    },
+    {
+      "id": 21,
+      "character": "六",
+      "meanings": [
+        "six"
+      ],
+      "kunyomi": [
+        "む",
+        "むっつ"
+      ],
+      "onyomi": [
+        "ロク"
+      ],
+      "strokeCount": 4,
+      "examples": [
+        {
+          "word": "六つ",
+          "reading": "むっつ",
+          "meaning": "six things"
+        },
+        {
+          "word": "六人",
+          "reading": "ろくにん",
+          "meaning": "six people"
+        },
+        {
+          "word": "六日",
+          "reading": "むいか",
+          "meaning": "six days, 6th day"
+        }
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": 22,
+      "character": "七",
+      "meanings": [
+        "seven"
+      ],
+      "kunyomi": [
+        "なな",
+        "ななつ"
+      ],
+      "onyomi": [
+        "シチ"
+      ],
+      "strokeCount": 2,
+      "examples": [
+        {
+          "word": "七つ",
+          "reading": "ななつ",
+          "meaning": "seven things"
+        },
+        {
+          "word": "七人",
+          "reading": "しちにん",
+          "meaning": "seven people"
+        },
+        {
+          "word": "七日",
+          "reading": "なのか",
+          "meaning": "seven days, 7th day"
+        }
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": 23,
+      "character": "八",
+      "meanings": [
+        "eight"
+      ],
+      "kunyomi": [
+        "や",
+        "やっつ"
+      ],
+      "onyomi": [
+        "ハチ"
+      ],
+      "strokeCount": 2,
+      "examples": [
+        {
+          "word": "八つ",
+          "reading": "やっつ",
+          "meaning": "eight things"
+        },
+        {
+          "word": "八人",
+          "reading": "はちにん",
+          "meaning": "eight people"
+        },
+        {
+          "word": "八日",
+          "reading": "ようか",
+          "meaning": "eight days, 8th day"
+        }
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": 24,
+      "character": "九",
+      "meanings": [
+        "nine"
+      ],
+      "kunyomi": [
+        "ここの",
+        "ここのつ"
+      ],
+      "onyomi": [
+        "キュウ",
+        "ク"
+      ],
+      "strokeCount": 2,
+      "examples": [
+        {
+          "word": "九つ",
+          "reading": "ここのつ",
+          "meaning": "nine things"
+        },
+        {
+          "word": "九人",
+          "reading": "きゅうにん",
+          "meaning": "nine people"
+        },
+        {
+          "word": "九日",
+          "reading": "ここのか",
+          "meaning": "nine days, 9th day"
+        }
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": 25,
+      "character": "十",
+      "meanings": [
+        "ten"
+      ],
+      "kunyomi": [
+        "とお",
+        "と"
+      ],
+      "onyomi": [
+        "ジュウ"
+      ],
+      "strokeCount": 2,
+      "examples": [
+        {
+          "word": "十",
+          "reading": "じゅう",
+          "meaning": "ten"
+        },
+        {
+          "word": "十人",
+          "reading": "じゅうにん",
+          "meaning": "ten people"
+        },
+        {
+          "word": "十日",
+          "reading": "とおか",
+          "meaning": "ten days, 10th day"
+        }
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": 26,
+      "character": "百",
+      "meanings": [
+        "hundred"
+      ],
+      "kunyomi": [
+        "もも"
+      ],
+      "onyomi": [
+        "ヒャク"
+      ],
+      "strokeCount": 6,
+      "examples": [
+        {
+          "word": "百",
+          "reading": "ひゃく",
+          "meaning": "hundred"
+        },
+        {
+          "word": "二百",
+          "reading": "にひゃく",
+          "meaning": "two hundred"
+        },
+        {
+          "word": "百人",
+          "reading": "ひゃくにん",
+          "meaning": "hundred people"
+        }
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 27,
+      "character": "千",
+      "meanings": [
+        "thousand"
+      ],
+      "kunyomi": [
+        "ち"
+      ],
+      "onyomi": [
+        "セン"
+      ],
+      "strokeCount": 3,
+      "examples": [
+        {
+          "word": "千",
+          "reading": "せん",
+          "meaning": "thousand"
+        },
+        {
+          "word": "三千",
+          "reading": "さんぜん",
+          "meaning": "three thousand"
+        },
+        {
+          "word": "千人",
+          "reading": "せんにん",
+          "meaning": "thousand people"
+        }
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 28,
+      "character": "万",
+      "meanings": [
+        "ten thousand"
+      ],
+      "kunyomi": [
+        "よろず"
+      ],
+      "onyomi": [
+        "マン",
+        "バン"
+      ],
+      "strokeCount": 3,
+      "examples": [
+        {
+          "word": "一万",
+          "reading": "いちまん",
+          "meaning": "ten thousand"
+        },
+        {
+          "word": "十万",
+          "reading": "じゅうまん",
+          "meaning": "hundred thousand"
+        },
+        {
+          "word": "万人",
+          "reading": "まんにん",
+          "meaning": "ten thousand people"
+        }
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 29,
+      "character": "円",
+      "meanings": [
+        "yen",
+        "circle"
+      ],
+      "kunyomi": [
+        "まる"
+      ],
+      "onyomi": [
+        "エン"
+      ],
+      "strokeCount": 4,
+      "examples": [
+        {
+          "word": "百円",
+          "reading": "ひゃくえん",
+          "meaning": "hundred yen"
+        },
+        {
+          "word": "千円",
+          "reading": "せんえん",
+          "meaning": "thousand yen"
+        },
+        {
+          "word": "円い",
+          "reading": "まるい",
+          "meaning": "round, circular"
+        }
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 30,
+      "character": "時",
+      "meanings": [
+        "time",
+        "hour"
+      ],
+      "kunyomi": [
+        "とき"
+      ],
+      "onyomi": [
+        "ジ"
+      ],
+      "strokeCount": 10,
+      "examples": [
+        {
+          "word": "時間",
+          "reading": "じかん",
+          "meaning": "time"
+        },
+        {
+          "word": "何時",
+          "reading": "なんじ",
+          "meaning": "what time"
+        },
+        {
+          "word": "時々",
+          "reading": "ときどき",
+          "meaning": "sometimes"
+        }
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 31,
+      "character": "山",
+      "meanings": [
+        "mountain"
+      ],
+      "kunyomi": [
+        "やま"
+      ],
+      "onyomi": [
+        "サン"
+      ],
+      "strokeCount": 3,
+      "examples": [
+        {
+          "word": "山",
+          "reading": "やま",
+          "meaning": "mountain"
+        },
+        {
+          "word": "富士山",
+          "reading": "ふじさん",
+          "meaning": "Mount Fuji"
+        },
+        {
+          "word": "山田",
+          "reading": "やまだ",
+          "meaning": "Yamada (surname)"
+        }
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": 32,
+      "character": "川",
+      "meanings": [
+        "river"
+      ],
+      "kunyomi": [
+        "かわ"
+      ],
+      "onyomi": [
+        "セン"
+      ],
+      "strokeCount": 3,
+      "examples": [
+        {
+          "word": "川",
+          "reading": "かわ",
+          "meaning": "river"
+        },
+        {
+          "word": "川田",
+          "reading": "かわた",
+          "meaning": "Kawata (surname)"
+        },
+        {
+          "word": "小川",
+          "reading": "おがわ",
+          "meaning": "small river, brook"
+        }
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": 33,
+      "character": "花",
+      "meanings": [
+        "flower"
+      ],
+      "kunyomi": [
+        "はな"
+      ],
+      "onyomi": [
+        "カ"
+      ],
+      "strokeCount": 7,
+      "examples": [
+        {
+          "word": "花",
+          "reading": "はな",
+          "meaning": "flower"
+        },
+        {
+          "word": "花火",
+          "reading": "はなび",
+          "meaning": "fireworks"
+        },
+        {
+          "word": "生け花",
+          "reading": "いけばな",
+          "meaning": "flower arrangement"
+        }
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 34,
+      "character": "草",
+      "meanings": [
+        "grass",
+        "herb"
+      ],
+      "kunyomi": [
+        "くさ"
+      ],
+      "onyomi": [
+        "ソウ"
+      ],
+      "strokeCount": 9,
+      "examples": [
+        {
+          "word": "草",
+          "reading": "くさ",
+          "meaning": "grass"
+        },
+        {
+          "word": "草原",
+          "reading": "そうげん",
+          "meaning": "grassland"
+        },
+        {
+          "word": "雑草",
+          "reading": "ざっそう",
+          "meaning": "weed"
+        }
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 35,
+      "character": "森",
+      "meanings": [
+        "forest"
+      ],
+      "kunyomi": [
+        "もり"
+      ],
+      "onyomi": [
+        "シン"
+      ],
+      "strokeCount": 12,
+      "examples": [
+        {
+          "word": "森",
+          "reading": "もり",
+          "meaning": "forest"
+        },
+        {
+          "word": "森林",
+          "reading": "しんりん",
+          "meaning": "forest, woods"
+        },
+        {
+          "word": "青森",
+          "reading": "あおもり",
+          "meaning": "Aomori (prefecture)"
+        }
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 36,
+      "character": "空",
+      "meanings": [
+        "sky",
+        "empty"
+      ],
+      "kunyomi": [
+        "そら",
+        "あく",
+        "から"
+      ],
+      "onyomi": [
+        "クウ"
+      ],
+      "strokeCount": 8,
+      "examples": [
+        {
+          "word": "空",
+          "reading": "そら",
+          "meaning": "sky"
+        },
+        {
+          "word": "空港",
+          "reading": "くうこう",
+          "meaning": "airport"
+        },
+        {
+          "word": "空っぽ",
+          "reading": "からっぽ",
+          "meaning": "empty"
+        }
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 37,
+      "character": "天",
+      "meanings": [
+        "heaven",
+        "sky"
+      ],
+      "kunyomi": [
+        "あま"
+      ],
+      "onyomi": [
+        "テン"
+      ],
+      "strokeCount": 4,
+      "examples": [
+        {
+          "word": "天気",
+          "reading": "てんき",
+          "meaning": "weather"
+        },
+        {
+          "word": "天国",
+          "reading": "てんごく",
+          "meaning": "heaven"
+        },
+        {
+          "word": "天皇",
+          "reading": "てんのう",
+          "meaning": "emperor"
+        }
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 38,
+      "character": "気",
+      "meanings": [
+        "spirit",
+        "energy",
+        "feeling"
+      ],
+      "kunyomi": [
+        "き"
+      ],
+      "onyomi": [
+        "キ",
+        "ケ"
+      ],
+      "strokeCount": 6,
+      "examples": [
+        {
+          "word": "気持ち",
+          "reading": "きもち",
+          "meaning": "feeling"
+        },
+        {
+          "word": "天気",
+          "reading": "てんき",
+          "meaning": "weather"
+        },
+        {
+          "word": "元気",
+          "reading": "げんき",
+          "meaning": "energetic, healthy"
+        }
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 39,
+      "character": "雨",
+      "meanings": [
+        "rain"
+      ],
+      "kunyomi": [
+        "あめ"
+      ],
+      "onyomi": [
+        "ウ"
+      ],
+      "strokeCount": 8,
+      "examples": [
+        {
+          "word": "雨",
+          "reading": "あめ",
+          "meaning": "rain"
+        },
+        {
+          "word": "大雨",
+          "reading": "おおあめ",
+          "meaning": "heavy rain"
+        },
+        {
+          "word": "雨水",
+          "reading": "あまみず",
+          "meaning": "rainwater"
+        }
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 40,
+      "character": "電",
+      "meanings": [
+        "electricity"
+      ],
+      "kunyomi": [],
+      "onyomi": [
+        "デン"
+      ],
+      "strokeCount": 13,
+      "examples": [
+        {
+          "word": "電気",
+          "reading": "でんき",
+          "meaning": "electricity"
+        },
+        {
+          "word": "電車",
+          "reading": "でんしゃ",
+          "meaning": "train"
+        },
+        {
+          "word": "電話",
+          "reading": "でんわ",
+          "meaning": "telephone"
+        }
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": 41,
+      "character": "車",
+      "meanings": [
+        "car",
+        "vehicle"
+      ],
+      "kunyomi": [
+        "くるま"
+      ],
+      "onyomi": [
+        "シャ"
+      ],
+      "strokeCount": 7,
+      "examples": [
+        {
+          "word": "車",
+          "reading": "くるま",
+          "meaning": "car"
+        },
+        {
+          "word": "電車",
+          "reading": "でんしゃ",
+          "meaning": "train"
+        },
+        {
+          "word": "自動車",
+          "reading": "じどうしゃ",
+          "meaning": "automobile"
+        }
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 42,
+      "character": "駅",
+      "meanings": [
+        "station"
+      ],
+      "kunyomi": [],
+      "onyomi": [
+        "エキ"
+      ],
+      "strokeCount": 14,
+      "examples": [
+        {
+          "word": "駅",
+          "reading": "えき",
+          "meaning": "station"
+        },
+        {
+          "word": "東京駅",
+          "reading": "とうきょうえき",
+          "meaning": "Tokyo Station"
+        },
+        {
+          "word": "駅員",
+          "reading": "えきいん",
+          "meaning": "station employee"
+        }
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": 43,
+      "character": "学",
+      "meanings": [
+        "study",
+        "learning"
+      ],
+      "kunyomi": [
+        "まなぶ"
+      ],
+      "onyomi": [
+        "ガク"
+      ],
+      "strokeCount": 8,
+      "examples": [
+        {
+          "word": "学校",
+          "reading": "がっこう",
+          "meaning": "school"
+        },
+        {
+          "word": "大学",
+          "reading": "だいがく",
+          "meaning": "university"
+        },
+        {
+          "word": "学生",
+          "reading": "がくせい",
+          "meaning": "student"
+        }
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 44,
+      "character": "校",
+      "meanings": [
+        "school"
+      ],
+      "kunyomi": [],
+      "onyomi": [
+        "コウ"
+      ],
+      "strokeCount": 10,
+      "examples": [
+        {
+          "word": "学校",
+          "reading": "がっこう",
+          "meaning": "school"
+        },
+        {
+          "word": "小学校",
+          "reading": "しょうがっこう",
+          "meaning": "elementary school"
+        },
+        {
+          "word": "高校",
+          "reading": "こうこう",
+          "meaning": "high school"
+        }
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 45,
+      "character": "男",
+      "meanings": [
+        "man",
+        "male"
+      ],
+      "kunyomi": [
+        "おとこ"
+      ],
+      "onyomi": [
+        "ダン"
+      ],
+      "strokeCount": 7,
+      "examples": [
+        {
+          "word": "男",
+          "reading": "おとこ",
+          "meaning": "man"
+        },
+        {
+          "word": "男性",
+          "reading": "だんせい",
+          "meaning": "male"
+        },
+        {
+          "word": "男の子",
+          "reading": "おとこのこ",
+          "meaning": "boy"
+        }
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 46,
+      "character": "女",
+      "meanings": [
+        "woman",
+        "female"
+      ],
+      "kunyomi": [
+        "おんな"
+      ],
+      "onyomi": [
+        "ジョ",
+        "ニョ"
+      ],
+      "strokeCount": 3,
+      "examples": [
+        {
+          "word": "女",
+          "reading": "おんな",
+          "meaning": "woman"
+        },
+        {
+          "word": "女性",
+          "reading": "じょせい",
+          "meaning": "female"
+        },
+        {
+          "word": "女の子",
+          "reading": "おんなのこ",
+          "meaning": "girl"
+        }
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 47,
+      "character": "子",
+      "meanings": [
+        "child",
+        "kid"
+      ],
+      "kunyomi": [
+        "こ"
+      ],
+      "onyomi": [
+        "シ",
+        "ス"
+      ],
+      "strokeCount": 3,
+      "examples": [
+        {
+          "word": "子",
+          "reading": "こ",
+          "meaning": "child"
+        },
+        {
+          "word": "子供",
+          "reading": "こども",
+          "meaning": "children"
+        },
+        {
+          "word": "男の子",
+          "reading": "おとこのこ",
+          "meaning": "boy"
+        }
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": 48,
+      "character": "父",
+      "meanings": [
+        "father"
+      ],
+      "kunyomi": [
+        "ちち"
+      ],
+      "onyomi": [
+        "フ"
+      ],
+      "strokeCount": 4,
+      "examples": [
+        {
+          "word": "父",
+          "reading": "ちち",
+          "meaning": "father"
+        },
+        {
+          "word": "お父さん",
+          "reading": "おとうさん",
+          "meaning": "father (polite)"
+        },
+        {
+          "word": "父親",
+          "reading": "ちちおや",
+          "meaning": "father, parent"
+        }
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 49,
+      "character": "母",
+      "meanings": [
+        "mother"
+      ],
+      "kunyomi": [
+        "はは"
+      ],
+      "onyomi": [
+        "ボ"
+      ],
+      "strokeCount": 5,
+      "examples": [
+        {
+          "word": "母",
+          "reading": "はは",
+          "meaning": "mother"
+        },
+        {
+          "word": "お母さん",
+          "reading": "おかあさん",
+          "meaning": "mother (polite)"
+        },
+        {
+          "word": "母親",
+          "reading": "ははおや",
+          "meaning": "mother, parent"
+        }
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 50,
+      "character": "友",
+      "meanings": [
+        "friend"
+      ],
+      "kunyomi": [
+        "とも"
+      ],
+      "onyomi": [
+        "ユウ"
+      ],
+      "strokeCount": 4,
+      "examples": [
+        {
+          "word": "友達",
+          "reading": "ともだち",
+          "meaning": "friend"
+        },
+        {
+          "word": "友人",
+          "reading": "ゆうじん",
+          "meaning": "friend, companion"
+        },
+        {
+          "word": "親友",
+          "reading": "しんゆう",
+          "meaning": "close friend"
+        }
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 51,
+      "character": "先",
+      "meanings": [
+        "before",
+        "ahead",
+        "previous"
+      ],
+      "kunyomi": [
+        "さき"
+      ],
+      "onyomi": [
+        "セン"
+      ],
+      "strokeCount": 6,
+      "examples": [
+        {
+          "word": "先生",
+          "reading": "せんせい",
+          "meaning": "teacher"
+        },
+        {
+          "word": "先週",
+          "reading": "せんしゅう",
+          "meaning": "last week"
+        },
+        {
+          "word": "先輩",
+          "reading": "せんぱい",
+          "meaning": "senior, upperclassman"
+        }
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 52,
+      "character": "名",
+      "meanings": [
+        "name"
+      ],
+      "kunyomi": [
+        "な"
+      ],
+      "onyomi": [
+        "メイ",
+        "ミョウ"
+      ],
+      "strokeCount": 6,
+      "examples": [
+        {
+          "word": "名前",
+          "reading": "なまえ",
+          "meaning": "name"
+        },
+        {
+          "word": "有名",
+          "reading": "ゆうめい",
+          "meaning": "famous"
+        },
+        {
+          "word": "名字",
+          "reading": "みょうじ",
+          "meaning": "surname"
+        }
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 53,
+      "character": "手",
+      "meanings": [
+        "hand"
+      ],
+      "kunyomi": [
+        "て"
+      ],
+      "onyomi": [
+        "シュ"
+      ],
+      "strokeCount": 4,
+      "examples": [
+        {
+          "word": "手",
+          "reading": "て",
+          "meaning": "hand"
+        },
+        {
+          "word": "右手",
+          "reading": "みぎて",
+          "meaning": "right hand"
+        },
+        {
+          "word": "手紙",
+          "reading": "てがみ",
+          "meaning": "letter"
+        }
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": 54,
+      "character": "足",
+      "meanings": [
+        "foot",
+        "leg"
+      ],
+      "kunyomi": [
+        "あし"
+      ],
+      "onyomi": [
+        "ソク"
+      ],
+      "strokeCount": 7,
+      "examples": [
+        {
+          "word": "足",
+          "reading": "あし",
+          "meaning": "foot, leg"
+        },
+        {
+          "word": "右足",
+          "reading": "みぎあし",
+          "meaning": "right foot"
+        },
+        {
+          "word": "素足",
+          "reading": "すあし",
+          "meaning": "bare feet"
+        }
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 55,
+      "character": "目",
+      "meanings": [
+        "eye"
+      ],
+      "kunyomi": [
+        "め"
+      ],
+      "onyomi": [
+        "モク",
+        "ボク"
+      ],
+      "strokeCount": 5,
+      "examples": [
+        {
+          "word": "目",
+          "reading": "め",
+          "meaning": "eye"
+        },
+        {
+          "word": "右目",
+          "reading": "みぎめ",
+          "meaning": "right eye"
+        },
+        {
+          "word": "目標",
+          "reading": "もくひょう",
+          "meaning": "goal, target"
+        }
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": 56,
+      "character": "耳",
+      "meanings": [
+        "ear"
+      ],
+      "kunyomi": [
+        "みみ"
+      ],
+      "onyomi": [
+        "ジ"
+      ],
+      "strokeCount": 6,
+      "examples": [
+        {
+          "word": "耳",
+          "reading": "みみ",
+          "meaning": "ear"
+        },
+        {
+          "word": "右耳",
+          "reading": "みぎみみ",
+          "meaning": "right ear"
+        },
+        {
+          "word": "耳鼻科",
+          "reading": "じびか",
+          "meaning": "otolaryngology"
+        }
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 57,
+      "character": "口",
+      "meanings": [
+        "mouth"
+      ],
+      "kunyomi": [
+        "くち"
+      ],
+      "onyomi": [
+        "コウ",
+        "ク"
+      ],
+      "strokeCount": 3,
+      "examples": [
+        {
+          "word": "口",
+          "reading": "くち",
+          "meaning": "mouth"
+        },
+        {
+          "word": "人口",
+          "reading": "じんこう",
+          "meaning": "population"
+        },
+        {
+          "word": "入口",
+          "reading": "いりぐち",
+          "meaning": "entrance"
+        }
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": 58,
+      "character": "見",
+      "meanings": [
+        "see",
+        "look"
+      ],
+      "kunyomi": [
+        "みる"
+      ],
+      "onyomi": [
+        "ケン"
+      ],
+      "strokeCount": 7,
+      "examples": [
+        {
+          "word": "見る",
+          "reading": "みる",
+          "meaning": "to see, to look"
+        },
+        {
+          "word": "見学",
+          "reading": "けんがく",
+          "meaning": "inspection, study by observation"
+        },
+        {
+          "word": "発見",
+          "reading": "はっけん",
+          "meaning": "discovery"
+        }
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 59,
+      "character": "行",
+      "meanings": [
+        "go",
+        "conduct"
+      ],
+      "kunyomi": [
+        "いく",
+        "ゆく"
+      ],
+      "onyomi": [
+        "コウ",
+        "ギョウ"
+      ],
+      "strokeCount": 6,
+      "examples": [
+        {
+          "word": "行く",
+          "reading": "いく",
+          "meaning": "to go"
+        },
+        {
+          "word": "旅行",
+          "reading": "りょこう",
+          "meaning": "travel, trip"
+        },
+        {
+          "word": "銀行",
+          "reading": "ぎんこう",
+          "meaning": "bank"
+        }
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 60,
+      "character": "来",
+      "meanings": [
+        "come"
+      ],
+      "kunyomi": [
+        "くる"
+      ],
+      "onyomi": [
+        "ライ"
+      ],
+      "strokeCount": 7,
+      "examples": [
+        {
+          "word": "来る",
+          "reading": "くる",
+          "meaning": "to come"
+        },
+        {
+          "word": "来年",
+          "reading": "らいねん",
+          "meaning": "next year"
+        },
+        {
+          "word": "将来",
+          "reading": "しょうらい",
+          "meaning": "future"
+        }
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 61,
+      "character": "食",
+      "meanings": [
+        "eat",
+        "food"
+      ],
+      "kunyomi": [
+        "たべる"
+      ],
+      "onyomi": [
+        "ショク",
+        "ジキ"
+      ],
+      "strokeCount": 9,
+      "examples": [
+        {
+          "word": "食べる",
+          "reading": "たべる",
+          "meaning": "to eat"
+        },
+        {
+          "word": "食事",
+          "reading": "しょくじ",
+          "meaning": "meal"
+        },
+        {
+          "word": "朝食",
+          "reading": "ちょうしょく",
+          "meaning": "breakfast"
+        }
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 62,
+      "character": "飲",
+      "meanings": [
+        "drink"
+      ],
+      "kunyomi": [
+        "のむ"
+      ],
+      "onyomi": [
+        "イン"
+      ],
+      "strokeCount": 12,
+      "examples": [
+        {
+          "word": "飲む",
+          "reading": "のむ",
+          "meaning": "to drink"
+        },
+        {
+          "word": "飲み物",
+          "reading": "のみもの",
+          "meaning": "beverage"
+        },
+        {
+          "word": "飲食",
+          "reading": "いんしょく",
+          "meaning": "food and drink"
+        }
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": 63,
+      "character": "語",
+      "meanings": [
+        "language",
+        "word"
+      ],
+      "kunyomi": [
+        "かたる"
+      ],
+      "onyomi": [
+        "ゴ"
+      ],
+      "strokeCount": 14,
+      "examples": [
+        {
+          "word": "日本語",
+          "reading": "にほんご",
+          "meaning": "Japanese language"
+        },
+        {
+          "word": "英語",
+          "reading": "えいご",
+          "meaning": "English language"
+        },
+        {
+          "word": "物語",
+          "reading": "ものがたり",
+          "meaning": "story, tale"
+        }
+      ],
+      "difficulty": "hard"
     }
   ]
 }

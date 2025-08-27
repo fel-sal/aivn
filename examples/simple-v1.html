@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanji Quest v1 - Simple Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+        }
+
+        /* Imagem lateral (esquerda) - 40% da tela */
+        .image-side {
+            flex: 0 0 40%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url('assets/images/bg-normal.jpg');
+            transition: background-image 0.5s ease;
+        }
+
+        /* Área do jogo (direita) - 60% da tela */
+        .game-side {
+            flex: 1;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .kanji {
+            font-size: 10rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .question {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        button {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .test-btn {
+            background: #3498db;
+            color: white;
+        }
+
+        .test-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .status {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            font-family: monospace;
+        }
+
+        /* Mobile responsivo */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            
+            .image-side {
+                flex: 0 0 50%;
+            }
+            
+            .kanji {
+                font-size: 6rem;
+            }
+            
+            .question {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Lado da imagem -->
+    <div class="image-side" id="imageSide"></div>
+    
+    <!-- Lado do jogo -->
+    <div class="game-side">
+        <div class="kanji" id="kanji">水</div>
+        <div class="question">What does this kanji mean?</div>
+        
+        <div class="buttons">
+            <button class="test-btn" onclick="testState('normal')">Normal State</button>
+            <button class="test-btn" onclick="testState('success')">Success State</button>
+            <button class="test-btn" onclick="testState('failure')">Failure State</button>
+        </div>
+    </div>
+    
+    <div class="status" id="status">
+        Estado atual: <span id="currentState">normal</span><br>
+        Layout: 40% imagem | 60% jogo
+    </div>
+
+    <script>
+        const imageMapping = {
+            'normal': 'assets/images/bg-normal.jpg',
+            'success': 'assets/images/bg-success.jpg', 
+            'failure': 'assets/images/bg-failure.jpg'
+        };
+        
+        function testState(state) {
+            const imageSide = document.getElementById('imageSide');
+            const currentStateSpan = document.getElementById('currentState');
+            
+            // Mudar imagem de fundo
+            imageSide.style.backgroundImage = `url('${imageMapping[state]}')`;
+            
+            // Atualizar status
+            currentStateSpan.textContent = state;
+            
+            console.log(`Mudou para estado: ${state}`);
+            console.log(`Imagem: ${imageMapping[state]}`);
+        }
+        
+        console.log('🧪 Teste v1 Layout carregado');
+        console.log('- Clique nos botões para testar os estados');
+        console.log('- Verifique se as imagens mudam corretamente');
+    </script>
+</body>
+</html>
