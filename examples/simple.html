@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanji Quest - Simple Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .start-screen {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        .game-title {
+            font-size: 3rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .game-subtitle {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+        }
+        
+        .round-selection h2 {
+            font-size: 1.5rem;
+            color: #34495e;
+            margin-bottom: 1.5rem;
+        }
+        
+        .round-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .round-select {
+            padding: 1rem 2rem;
+            border: 3px solid #3498db;
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            color: white;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 200px;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .round-select:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+            background: linear-gradient(135deg, #0984e3 0%, #74b9ff 100%);
+        }
+        
+        .round-select:active {
+            transform: translateY(-1px);
+        }
+        
+        #status {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #ecf0f1;
+            border-radius: 10px;
+            font-family: monospace;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="start-screen">
+        <h1 class="game-title">Kanji Quest</h1>
+        <p class="game-subtitle">Test your JLPT N5 knowledge!</p>
+        <div class="round-selection">
+            <h2>How many rounds do you want to play?</h2>
+            <div class="round-buttons">
+                <button class="round-select" onclick="testButton(5)">5 Rounds</button>
+                <button class="round-select" onclick="testButton(10)">10 Rounds</button>
+                <button class="round-select" onclick="testButton(20)">20 Rounds</button>
+            </div>
+        </div>
+        <div id="status">
+            Status: Aguardando clique nos botões...
+        </div>
+    </div>
+
+    <script>
+        function testButton(rounds) {
+            const status = document.getElementById('status');
+            status.innerHTML = `
+                ✅ BOTÃO FUNCIONOU!<br>
+                Rounds selecionados: ${rounds}<br>
+                Timestamp: ${new Date().toLocaleTimeString()}<br>
+                <br>
+                Agora vamos testar o jogo completo...
+            `;
+            
+            console.log('Botão funcionou! Rounds:', rounds);
+            
+            // Simular início do jogo
+            setTimeout(() => {
+                status.innerHTML += '<br>🎮 Iniciando jogo completo...';
+                setTimeout(() => {
+                    window.location.href = 'debug.html';
+                }, 1000);
+            }, 2000);
+        }
+        
+        console.log('Página simples carregada - testando botões');
+    </script>
+</body>
+</html>

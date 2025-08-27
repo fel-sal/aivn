@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanji Quest - JLPT N5 Learning Game</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/jrpg-ui.css">
+    <link rel="stylesheet" href="css/animations.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>漢</text></svg>">
+    
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Kanji Quest - JLPT N5 Learning Game">
+    <meta property="og:description" content="Learn JLPT N5 kanji through an interactive JRPG-style quiz game">
+    <meta property="og:type" content="website">
+    <meta name="description" content="Interactive HTML5 game to learn JLPT N5 kanji with JRPG-style dialogues and visual progression">
+    <meta name="keywords" content="kanji, JLPT, N5, Japanese, learning, game, quiz, education">
+    
+    <!-- Preload critical images -->
+    <link rel="preload" href="assets/images/bg-normal.jpg" as="image">
+    <link rel="preload" href="assets/images/bg-success.jpg" as="image">
+    <link rel="preload" href="assets/images/bg-failure.jpg" as="image">
+</head>
+<body class="state-normal">
+    <!-- Main Game Container -->
+    <div class="game-container">
+        <!-- Loading Screen (Initial) -->
+        <div class="loading-screen fade-in">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Loading Kanji Quest...</div>
+        </div>
+    </div>
+    
+    <!-- Dialogue Container (Dynamic) -->
+    <!-- This will be populated by the dialogue system -->
+    
+    <!-- Audio Elements (for future sound effects) -->
+    <audio id="click-sound" preload="auto">
+        <!-- <source src="assets/audio/click.mp3" type="audio/mpeg"> -->
+    </audio>
+    <audio id="correct-sound" preload="auto">
+        <!-- <source src="assets/audio/correct.mp3" type="audio/mpeg"> -->
+    </audio>
+    <audio id="wrong-sound" preload="auto">
+        <!-- <source src="assets/audio/wrong.mp3" type="audio/mpeg"> -->
+    </audio>
+    
+    <!-- JavaScript Files -->
+    <script src="js/kanji-database.js"></script>
+    <script src="js/quiz-engine.js"></script>
+    <script src="js/dialogue-system.js"></script>
+    <script src="js/state-manager.js"></script>
+    <script src="js/ui-controller.js"></script>
+    <script src="js/game.js"></script>
+    
+    <!-- Initialize Game -->
+    <script>
+        // Initialize State Manager first
+        StateManager.init();
+        
+        // Game initialization happens in game.js DOMContentLoaded event
+        console.log('Kanji Quest starting...');
+        
+        // Service Worker for PWA (future enhancement)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                // navigator.serviceWorker.register('/sw.js')
+                //     .then(registration => console.log('SW registered'))
+                //     .catch(error => console.log('SW registration failed'));
+            });
+        }
+        
+        // Performance monitoring
+        window.addEventListener('load', () => {
+            const loadTime = performance.now();
+            console.log(`Page loaded in ${loadTime.toFixed(2)}ms`);
+        });
+        
+        // Error handling
+        window.addEventListener('error', (e) => {
+            console.error('Game error:', e.error);
+            // Could send error reports to analytics in production
+        });
+        
+        // Prevent context menu on long press (mobile)
+        document.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+        });
+        
+        // Prevent zoom on double tap (mobile)
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', (e) => {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                e.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+    
+    <!-- Analytics placeholder -->
+    <!-- Google Analytics or other analytics code would go here -->
+    
+    <!-- Schema.org structured data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": "Kanji Quest",
+        "description": "Interactive JLPT N5 kanji learning game with JRPG-style interface",
+        "genre": "Educational Game",
+        "gamePlatform": "Web Browser",
+        "operatingSystem": "Any",
+        "applicationCategory": "GameApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+</body>
+</html>

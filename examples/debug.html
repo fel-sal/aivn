@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanji Quest - Debug</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/jrpg-ui.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body class="state-normal">
+    <div class="game-container">
+        <div class="loading-screen fade-in">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Loading Kanji Quest...</div>
+        </div>
+    </div>
+    
+    <!-- Load scripts in order -->
+    <script src="js/kanji-database.js"></script>
+    <script src="js/quiz-engine.js"></script>
+    <script src="js/dialogue-system.js"></script>
+    <script src="js/state-manager.js"></script>
+    <script src="js/ui-controller.js"></script>
+    <script src="js/game.js"></script>
+    
+    <script>
+        // Debug initialization
+        console.log('=== DEBUG INITIALIZATION ===');
+        
+        // Check if all classes are loaded
+        console.log('KanjiDatabase:', typeof KanjiDatabase);
+        console.log('QuizEngine:', typeof QuizEngine);
+        console.log('DialogueSystem:', typeof DialogueSystem);
+        console.log('StateManager:', typeof StateManager);
+        console.log('UIController:', typeof UIController);
+        console.log('KanjiQuest:', typeof KanjiQuest);
+        
+        // Manual initialization
+        async function debugInit() {
+            try {
+                console.log('Starting manual initialization...');
+                
+                // Initialize State Manager
+                StateManager.init();
+                
+                // Create game instance
+                const game = new KanjiQuest();
+                console.log('Game instance created');
+                
+                // Initialize game
+                await game.init();
+                console.log('Game initialization complete');
+                
+                // Make globally accessible
+                window.KanjiGame = game;
+                
+            } catch (error) {
+                console.error('Debug initialization failed:', error);
+            }
+        }
+        
+        // Start debug initialization when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', debugInit);
+        } else {
+            debugInit();
+        }
+    </script>
+</body>
+</html>

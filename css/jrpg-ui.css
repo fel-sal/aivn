@@ -1,0 +1,133 @@
+/* JRPG-style Dialogue System */
+
+.dialogue-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transform: translateY(100%);
+    transition: transform 0.5s ease-in-out;
+}
+
+.dialogue-container.active {
+    transform: translateY(0);
+}
+
+.dialogue-box {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    border: 4px solid #ecf0f1;
+    border-bottom: none;
+    border-radius: 15px 15px 0 0;
+    margin: 0 20px;
+    min-height: 150px;
+    position: relative;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.dialogue-content {
+    padding: 20px 30px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.character-portrait {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #ecf0f1;
+    background: #95a5a6;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.character-portrait.girl {
+    background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
+}
+
+.character-portrait.man {
+    background: linear-gradient(135deg, #636e72 0%, #2d3436 100%);
+}
+
+.dialogue-text-area {
+    flex: 1;
+    color: #ecf0f1;
+}
+
+.character-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #f39c12;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.dialogue-text {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    font-family: 'Courier New', monospace;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.continue-indicator {
+    position: absolute;
+    bottom: 15px;
+    right: 25px;
+    color: #f39c12;
+    font-size: 1.5rem;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Typewriter effect */
+.typewriter {
+    overflow: hidden;
+    border-right: 2px solid #f39c12;
+    white-space: nowrap;
+    animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #f39c12; }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .dialogue-box {
+        margin: 0 10px;
+        min-height: 120px;
+    }
+    
+    .dialogue-content {
+        padding: 15px 20px;
+        gap: 15px;
+    }
+    
+    .character-portrait {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .dialogue-text {
+        font-size: 1rem;
+    }
+    
+    .character-name {
+        font-size: 1rem;
+    }
+}

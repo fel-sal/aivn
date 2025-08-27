@@ -1,0 +1,277 @@
+/* Main Styles for Kanji Quest */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+    transition: background-image 0.5s ease-in-out;
+    position: relative;
+}
+
+/* Background overlay system */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.3;
+    z-index: -1;
+    transition: background-image 0.5s ease-in-out;
+}
+
+/* Game States */
+.state-normal::before {
+    background-image: url('../assets/images/bg-normal.jpg');
+}
+
+.state-success::before {
+    background-image: url('../assets/images/bg-success.jpg');
+}
+
+.state-failure::before {
+    background-image: url('../assets/images/bg-failure.jpg');
+}
+
+/* Gradient overlay */
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+/* Main container */
+.game-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Kanji display */
+.kanji-display {
+    font-size: 8rem;
+    font-weight: bold;
+    color: #2c3e50;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+    margin-bottom: 2rem;
+}
+
+/* Question panel */
+.question-panel {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.question-text {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+}
+
+/* Multiple choice options */
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.option-button {
+    padding: 1rem;
+    border: 2px solid #3498db;
+    background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+    color: white;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.option-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.option-button:active {
+    transform: translateY(0);
+}
+
+/* Score panel */
+.score-panel {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Start screen styles */
+.start-screen {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+}
+
+.game-title {
+    font-size: 3rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.game-subtitle {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    margin-bottom: 2rem;
+}
+
+.round-selection h2 {
+    font-size: 1.5rem;
+    color: #34495e;
+    margin-bottom: 1.5rem;
+}
+
+.round-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.round-select {
+    padding: 1rem 2rem;
+    border: 3px solid #3498db;
+    background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+    color: white;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 200px;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.round-select:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+    background: linear-gradient(135deg, #0984e3 0%, #74b9ff 100%);
+}
+
+.round-select:active {
+    transform: translateY(-1px);
+}
+
+/* Loading screen */
+.loading-screen {
+    text-align: center;
+    color: #2c3e50;
+}
+
+.loading-text {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+}
+
+/* Results screen */
+.results-screen {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+}
+
+.results-stats {
+    margin: 2rem 0;
+}
+
+.stat {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+    font-size: 1.1rem;
+}
+
+.stat-label {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.stat-value {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.play-again-btn {
+    padding: 1rem 2rem;
+    border: none;
+    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+    color: white;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.play-again-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .kanji-display {
+        font-size: 6rem;
+    }
+    
+    .options-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .question-panel {
+        padding: 1rem;
+    }
+    
+    .start-screen {
+        padding: 2rem;
+        margin: 1rem;
+    }
+    
+    .game-title {
+        font-size: 2.5rem;
+    }
+    
+    .round-buttons {
+        width: 100%;
+    }
+    
+    .round-select {
+        min-width: auto;
+        width: 100%;
+    }
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanji Quest - Test</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/jrpg-ui.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body class="state-normal">
+    <div class="game-container">
+        <div class="loading-screen fade-in">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Loading Kanji Quest...</div>
+        </div>
+    </div>
+    
+    <script>
+        // Simple test to check if everything loads
+        console.log('Test page loaded');
+        
+        // Test button functionality
+        function testStartScreen() {
+            const container = document.querySelector('.game-container');
+            container.innerHTML = `
+                <div class="start-screen fade-in">
+                    <h1 class="game-title">Kanji Quest</h1>
+                    <p class="game-subtitle">Test your JLPT N5 knowledge!</p>
+                    <div class="round-selection">
+                        <h2>How many rounds do you want to play?</h2>
+                        <div class="round-buttons">
+                            <button class="round-select" data-rounds="5" onclick="testClick(5)">5 Rounds</button>
+                            <button class="round-select" data-rounds="10" onclick="testClick(10)">10 Rounds</button>
+                            <button class="round-select" data-rounds="20" onclick="testClick(20)">20 Rounds</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function testClick(rounds) {
+            alert('Button clicked! Rounds: ' + rounds);
+            console.log('Button works! Selected rounds:', rounds);
+        }
+        
+        // Load test screen after 1 second
+        setTimeout(testStartScreen, 1000);
+    </script>
+</body>
+</html>
