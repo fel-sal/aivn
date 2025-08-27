@@ -9,7 +9,13 @@ class KanjiDatabase {
         if (this.isLoaded) return;
         
         try {
-            const response = await fetch('data/kanji-n5.json');
+            // Use version config for cache busting
+            const url = window.VERSION_CONFIG ? 
+                window.VERSION_CONFIG.getDataUrl('kanji-n5.json') : 
+                `data/kanji-n5.json?v=${Date.now()}`;
+            
+            console.log('Loading kanji data from:', url);
+            const response = await fetch(url);
             const data = await response.json();
             
             // Transform JSON data to match expected format
@@ -24,9 +30,15 @@ class KanjiDatabase {
             
             this.isLoaded = true;
             console.log(`Loaded ${this.kanjiData.length} kanji characters`);
+            console.log('Sample of loaded kanjis:', this.kanjiData.slice(0, 5).map(k => k.kanji));
+            console.log('Last few kanjis:', this.kanjiData.slice(-5).map(k => k.kanji));
         } catch (error) {
-            console.error('Failed to load kanji data:', error);
-            // Fallback to basic data
+            console.error('❌ CRITICAL: Failed to load kanji data:', error);
+            console.error('❌ ERROR DETAILS:', error.stack);
+            console.error('❌ URL was:', url);
+            
+            // Use fallback data as last resort
+            console.warn('⚠️ Using fallback data - only 5 basic kanjis available');
             this.loadFallbackData();
         }
     }
