@@ -122,6 +122,9 @@ class KanjiQuest {
         this.correctAnswers = 0;
         this.gameStarted = true;
         
+        // Set initial state to normal (maintain throughout game)
+        this.setState('normal');
+        
         console.log('Game state set, showing dialogue');
         
         // Show intro dialogue
@@ -220,19 +223,17 @@ class KanjiQuest {
     endGame() {
         const accuracy = (this.correctAnswers / this.totalRounds) * 100;
         
-        // Determine final state
-        if (accuracy >= 70) {
+        // Determine final state based on accuracy
+        if (accuracy > 70) {
             this.setState('success');
             DialogueSystem.showDialogue('girl', 'やった！これが君の賞品だ！', () => {
                 this.showResults();
             });
-        } else if (accuracy < 40) {
+        } else {
             this.setState('failure');
             DialogueSystem.showDialogue('man', '出て行け、この外人！', () => {
                 this.showResults();
             });
-        } else {
-            this.showResults();
         }
     }
 

@@ -556,6 +556,9 @@
             score = 0;
             correctAnswers = 0;
             
+            // Set initial state to normal
+            changeGameState('normal');
+            
             showDialogue('girl', 'Do you know your kanji?', () => {
                 nextRound();
             });
@@ -650,7 +653,7 @@
                 score += 100;
                 correctAnswers++;
                 setTimeout(() => {
-                    changeGameState('success');
+                    // Keep normal state during game
                     setTimeout(nextRound, 2000);
                 }, 1000);
             } else {
@@ -661,23 +664,16 @@
                     }
                 });
                 setTimeout(() => {
-                    changeGameState('failure');
+                    // Keep normal state during game
                     setTimeout(nextRound, 2000);
                 }, 1000);
             }
         }
 
         function updateGameState() {
-            const accuracy = currentRound > 1 ? (correctAnswers / (currentRound - 1)) * 100 : 100;
-            
-            if (accuracy >= 70 && currentRound > 2) {
-                gameState = 'success';
-            } else if (accuracy < 40 && currentRound > 3) {
-                gameState = 'failure';
-            } else {
-                gameState = 'normal';
-            }
-            
+            // Keep normal state throughout the game
+            // State will only change at the end based on final accuracy
+            gameState = 'normal';
             changeGameState(gameState);
         }
 
@@ -704,14 +700,12 @@
         function endGame() {
             const accuracy = (correctAnswers / totalRounds) * 100;
             
-            if (accuracy >= 70) {
+            if (accuracy > 70) {
                 changeGameState('success');
                 showDialogue('girl', 'やった！これが君の賞品だ！', showResults);
-            } else if (accuracy < 40) {
+            } else {
                 changeGameState('failure');
                 showDialogue('man', '出て行け、この外人！', showResults);
-            } else {
-                showResults();
             }
         }
 

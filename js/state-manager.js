@@ -117,12 +117,10 @@ class StateManager {
 
     // Auto-update state based on performance
     static autoUpdateState() {
-        const suggestedState = this.evaluatePerformance();
-        
-        // Only change state if it's different and game is in progress
-        if (suggestedState !== this.currentState && this.gameData.totalRounds > 0) {
-            this.setState(suggestedState);
-        }
+        // Disable auto state updates during gameplay
+        // State should only change at the end of the game
+        // Keep this method for backward compatibility but do nothing
+        return;
     }
 
     // Save state to localStorage
