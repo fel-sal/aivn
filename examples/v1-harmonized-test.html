@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanji Quest v1 - Harmonized Layout Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        /* Layout principal: 40% imagem | 60% jogo */
+        .main-layout {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Container da moldura harmonizada */
+        .character-frame {
+            flex: 0 0 calc(40% - 30px);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* Moldura com cores harmonizadas (igual à caixa de texto) */
+        .frame-border {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            height: 100%;
+            position: relative;
+        }
+
+        /* Moldura interna com efeito sutil */
+        .frame-inner {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.9) 0%, 
+                rgba(248, 249, 250, 0.9) 50%, 
+                rgba(255, 255, 255, 0.9) 100%);
+            padding: 8px;
+            border-radius: 17px;
+            height: 100%;
+            box-shadow: 
+                inset 0 2px 4px rgba(0, 0, 0, 0.05),
+                inset 0 -1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        /* Área da imagem com contenção */
+        .character-display {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Imagem contida na moldura */
+        .character-image {
+            width: 100%;
+            height: 100%;
+            background-size: contain;
+            background-position: center center;
+            background-repeat: no-repeat;
+            transition: background-image 0.8s ease-in-out;
+            position: relative;
+        }
+
+        /* Estados com as imagens otimizadas */
+        .character-image.state-normal {
+            background-image: url('assets/images/bg-normal-v1.jpg');
+        }
+
+        .character-image.state-success {
+            background-image: url('assets/images/bg-success-v1.jpg');
+        }
+
+        .character-image.state-failure {
+            background-image: url('assets/images/bg-failure-v1.jpg');
+        }
+
+        /* Etiqueta da moldura harmonizada */
+        .frame-label {
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            color: #2c3e50;
+            padding: 8px 20px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            z-index: 10;
+        }
+
+        /* Área do jogo otimizada */
+        .game-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Kanji display principal */
+        .kanji-display {
+            font-size: 10rem;
+            font-weight: 900;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            transition: all 0.5s ease;
+        }
+
+        /* Área de pergunta (referência para harmonização) */
+        .question-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            max-width: 550px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .question-text {
+            font-size: 1.6rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .option-button {
+            padding: 1.2rem 1.5rem;
+            border: 3px solid #3498db;
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            color: white;
+            border-radius: 18px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(52, 152, 219, 0.3);
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .option-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+            background: linear-gradient(135deg, #0984e3 0%, #74b9ff 100%);
+        }
+
+        .option-button:active {
+            transform: translateY(-2px);
+        }
+
+        /* Feedback visual para respostas */
+        .option-button.correct {
+            background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+            border-color: #00b894;
+            box-shadow: 0 5px 20px rgba(0, 184, 148, 0.4);
+        }
+
+        .option-button.wrong {
+            background: linear-gradient(135deg, #e17055 0%, #e74c3c 100%);
+            border-color: #e17055;
+            box-shadow: 0 5px 20px rgba(225, 112, 85, 0.4);
+        }
+
+        /* Score panel harmonizado */
+        .score-panel {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            min-width: 160px;
+            text-align: center;
+        }
+
+        .score-item {
+            margin: 0.5rem 0;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        /* Controles de teste harmonizados */
+        .test-controls {
+            position: absolute;
+            bottom: 25px;
+            left: 25px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            color: #2c3e50;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .test-controls h3 {
+            margin-bottom: 1rem;
+            color: #3498db;
+            font-size: 1.1rem;
+        }
+
+        .state-buttons {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .state-btn {
+            padding: 0.6rem 1.2rem;
+            border: 2px solid #3498db;
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            color: white;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .state-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(116, 185, 255, 0.4);
+        }
+
+        .status-info {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            line-height: 1.4;
+            color: #2c3e50;
+        }
+
+        /* JRPG Dialogue harmonizado */
+        .dialogue-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-bottom: none;
+            border-radius: 20px 20px 0 0;
+            margin: 0 25px;
+            min-height: 140px;
+            padding: 25px;
+            color: #2c3e50;
+            transform: translateY(100%);
+            transition: transform 0.6s ease-in-out;
+            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .dialogue-overlay.active {
+            transform: translateY(0);
+        }
+
+        .character-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #3498db;
+        }
+
+        .dialogue-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            font-family: 'Georgia', serif;
+            color: #2c3e50;
+        }
+
+        /* Responsive design para mobile */
+        @media (max-width: 768px) {
+            .main-layout {
+                flex-direction: column;
+                padding: 15px;
+                gap: 15px;
+            }
+            
+            .character-frame {
+                flex: 0 0 45%;
+            }
+            
+            .frame-border {
+                padding: 10px;
+            }
+            
+            .frame-inner {
+                padding: 6px;
+            }
+            
+            .character-image {
+                background-position: center top;
+            }
+            
+            .game-panel {
+                flex: 1;
+                padding: 1.5rem;
+            }
+            
+            .kanji-display {
+                font-size: 7rem;
+            }
+            
+            .question-container {
+                padding: 2rem;
+            }
+            
+            .options-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .test-controls {
+                position: relative;
+                margin-top: 1rem;
+            }
+        }
+
+        /* Animações de entrada */
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .game-panel > * {
+            animation: slideInRight 0.6s ease-out;
+        }
+
+        .character-frame {
+            animation: slideInLeft 0.6s ease-out;
+        }
+
+        /* Efeito de brilho sutil para harmonia */
+        .frame-border:hover,
+        .question-container:hover,
+        .score-panel:hover,
+        .test-controls:hover {
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-layout">
+        <!-- Moldura harmonizada da personagem -->
+        <div class="character-frame">
+            <div class="frame-border">
+                <div class="frame-inner">
+                    <div class="character-display">
+                        <div class="character-image state-normal" id="characterImage">
+                            <!-- Background image contained here -->
+                        </div>
+                    </div>
+                </div>
+                <div class="frame-label" id="frameLabel">Yuki - Student</div>
+            </div>
+        </div>
+        
+        <!-- Painel do jogo -->
+        <div class="game-panel">
+            <!-- Score panel harmonizado -->
+            <div class="score-panel">
+                <div class="score-item"><strong>Score:</strong> 750</div>
+                <div class="score-item"><strong>Round:</strong> 5/10</div>
+                <div class="score-item"><strong>Accuracy:</strong> 75%</div>
+            </div>
+            
+            <!-- Kanji principal -->
+            <div class="kanji-display" id="kanjiDisplay">日</div>
+            
+            <!-- Container da pergunta (referência para cores) -->
+            <div class="question-container">
+                <div class="question-text" id="questionText">
+                    What does this kanji mean?
+                </div>
+                
+                <div class="options-grid">
+                    <button class="option-button" onclick="handleAnswer(this, true)">day/sun</button>
+                    <button class="option-button" onclick="handleAnswer(this, false)">moon</button>
+                    <button class="option-button" onclick="handleAnswer(this, false)">star</button>
+                    <button class="option-button" onclick="handleAnswer(this, false)">cloud</button>
+                </div>
+            </div>
+            
+            <!-- Controles de teste harmonizados -->
+            <div class="test-controls">
+                <h3>🎨 v1 Harmonized Layout</h3>
+                <div class="state-buttons">
+                    <button class="state-btn" onclick="changeState('normal')">Normal</button>
+                    <button class="state-btn" onclick="changeState('success')">Success</button>
+                    <button class="state-btn" onclick="changeState('failure')">Failure</button>
+                </div>
+                <div class="status-info">
+                    <div><strong>Estado:</strong> <span id="currentState">normal</span></div>
+                    <div><strong>Design:</strong> Harmonized color scheme</div>
+                    <div><strong>Style:</strong> Consistent visual elements</div>
+                    <div><strong>Frame:</strong> Matches text box style</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Dialogue overlay harmonizado -->
+    <div class="dialogue-overlay" id="dialogueBox">
+        <div class="character-name" id="characterName">Yuki</div>
+        <div class="dialogue-text" id="dialogueText">Do you know your kanji?</div>
+    </div>
+
+    <script>
+        let currentState = 'normal';
+        
+        // Kanji de teste
+        const testKanji = [
+            { 
+                kanji: '日', 
+                question: 'What does this kanji mean?', 
+                options: ['day/sun', 'moon', 'star', 'cloud'], 
+                correct: 0 
+            },
+            { 
+                kanji: '人', 
+                question: 'What is the kunyomi reading?', 
+                options: ['ひと', 'やま', 'みず', 'そら'], 
+                correct: 0 
+            },
+            { 
+                kanji: '水', 
+                question: 'What does this kanji mean?', 
+                options: ['fire', 'water', 'earth', 'wind'], 
+                correct: 1 
+            },
+            { 
+                kanji: '大', 
+                question: 'What is the onyomi reading?', 
+                options: ['ショウ', 'ダイ', 'コウ', 'セン'], 
+                correct: 1 
+            }
+        ];
+        
+        let currentKanjiIndex = 0;
+        
+        function changeState(newState) {
+            currentState = newState;
+            const image = document.getElementById('characterImage');
+            const stateSpan = document.getElementById('currentState');
+            const frameLabel = document.getElementById('frameLabel');
+            
+            // Remover classes anteriores
+            image.classList.remove('state-normal', 'state-success', 'state-failure');
+            
+            // Adicionar nova classe
+            image.classList.add(`state-${newState}`);
+            stateSpan.textContent = newState;
+            
+            // Atualizar etiqueta da moldura
+            switch(newState) {
+                case 'success':
+                    frameLabel.textContent = 'Yuki - Celebrating!';
+                    break;
+                case 'failure':
+                    frameLabel.textContent = 'Sensei - Serious';
+                    break;
+                default:
+                    frameLabel.textContent = 'Yuki - Student';
+            }
+            
+            // Mostrar diálogo correspondente
+            showDialogue(newState);
+            
+            console.log(`🎨 Estado mudou para: ${newState}`);
+            console.log(`🖼️ Moldura harmonizada: bg-${newState}-v1.jpg`);
+        }
+        
+        function showDialogue(state) {
+            const dialogueBox = document.getElementById('dialogueBox');
+            const characterName = document.getElementById('characterName');
+            const dialogueText = document.getElementById('dialogueText');
+            
+            let character, text;
+            
+            switch(state) {
+                case 'success':
+                    character = 'Yuki';
+                    text = 'やった！これが君の賞品だ！';
+                    break;
+                case 'failure':
+                    character = 'Sensei';
+                    text = '出て行け、この外人！';
+                    break;
+                default:
+                    character = 'Yuki';
+                    text = 'Do you know your kanji?';
+            }
+            
+            characterName.textContent = character;
+            dialogueText.textContent = text;
+            
+            // Mostrar dialogue box
+            dialogueBox.classList.add('active');
+            
+            // Esconder após 4 segundos
+            setTimeout(() => {
+                dialogueBox.classList.remove('active');
+            }, 4000);
+        }
+        
+        function handleAnswer(button, isCorrect) {
+            // Desabilitar todos os botões
+            const buttons = document.querySelectorAll('.option-button');
+            buttons.forEach(btn => btn.disabled = true);
+            
+            if (isCorrect) {
+                button.classList.add('correct');
+                setTimeout(() => {
+                    changeState('success');
+                    setTimeout(() => nextKanji(), 3000);
+                }, 1000);
+            } else {
+                button.classList.add('wrong');
+                // Destacar resposta correta
+                buttons.forEach((btn, index) => {
+                    if (btn !== button && !btn.classList.contains('wrong')) {
+                        btn.classList.add('correct');
+                    }
+                });
+                setTimeout(() => {
+                    changeState('failure');
+                    setTimeout(() => nextKanji(), 3000);
+                }, 1000);
+            }
+        }
+        
+        function nextKanji() {
+            currentKanjiIndex = (currentKanjiIndex + 1) % testKanji.length;
+            const kanji = testKanji[currentKanjiIndex];
+            
+            document.getElementById('kanjiDisplay').textContent = kanji.kanji;
+            document.getElementById('questionText').textContent = kanji.question;
+            
+            const buttons = document.querySelectorAll('.option-button');
+            buttons.forEach((btn, index) => {
+                btn.textContent = kanji.options[index];
+                btn.disabled = false;
+                btn.classList.remove('correct', 'wrong');
+                btn.onclick = () => handleAnswer(btn, index === kanji.correct);
+            });
+            
+            // Voltar ao estado normal
+            setTimeout(() => changeState('normal'), 1000);
+        }
+        
+        // Inicialização
+        console.log('🎨 Kanji Quest v1 - Harmonized Layout Test');
+        console.log('🖼️ Frame: Harmonized with text box colors');
+        console.log('🎯 Design: Consistent visual elements');
+        console.log('✨ Features: Unified color scheme, backdrop blur');
+        
+        // Mostrar diálogo inicial
+        setTimeout(() => showDialogue('normal'), 1500);
+    </script>
+</body>
+</html>

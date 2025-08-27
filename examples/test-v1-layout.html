@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanji Quest v1 - Layout Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Layout principal: imagem lateral + área do jogo */
+        .game-layout {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* Área da imagem lateral esquerda */
+        .character-panel {
+            flex: 0 0 40%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            transition: background-image 0.8s ease-in-out;
+        }
+
+        /* Estados das imagens */
+        .character-panel.state-normal {
+            background-image: url('assets/images/bg-normal.jpg');
+        }
+
+        .character-panel.state-success {
+            background-image: url('assets/images/bg-success.jpg');
+        }
+
+        .character-panel.state-failure {
+            background-image: url('assets/images/bg-failure.jpg');
+        }
+
+        /* Overlay para escurecer a imagem se necessário */
+        .character-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.1);
+            pointer-events: none;
+        }
+
+        /* Área do jogo (direita) */
+        .game-panel {
+            flex: 1;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        /* Kanji display */
+        .kanji-display {
+            font-size: 8rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Question area */
+        .question-area {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .question-text {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .option-button, .state-button {
+            padding: 1rem 2rem;
+            border: 3px solid #3498db;
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            color: white;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .option-button:hover, .state-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        /* Score panel */
+        .score-panel {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Test controls */
+        .test-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+        }
+
+        .test-controls h3 {
+            margin-bottom: 1rem;
+            color: #74b9ff;
+        }
+
+        .state-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .state-button {
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+        }
+
+        /* JRPG Dialogue Box */
+        .dialogue-box {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            border: 4px solid #ecf0f1;
+            border-bottom: none;
+            border-radius: 15px 15px 0 0;
+            margin: 0 20px;
+            min-height: 120px;
+            padding: 20px;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .dialogue-box.active {
+            transform: translateY(0);
+        }
+
+        .character-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #f39c12;
+        }
+
+        .dialogue-text {
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .game-layout {
+                flex-direction: column;
+            }
+            
+            .character-panel {
+                flex: 0 0 50%;
+            }
+            
+            .game-panel {
+                flex: 1;
+                padding: 1rem;
+            }
+            
+            .kanji-display {
+                font-size: 6rem;
+            }
+            
+            .question-area {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-layout">
+        <!-- Painel da personagem (esquerda) -->
+        <div class="character-panel state-normal" id="characterPanel">
+            <!-- A imagem será o background -->
+        </div>
+        
+        <!-- Painel do jogo (direita) -->
+        <div class="game-panel">
+            <!-- Score -->
+            <div class="score-panel">
+                <div><strong>Score:</strong> 500</div>
+                <div><strong>Round:</strong> 3/10</div>
+            </div>
+            
+            <!-- Kanji principal -->
+            <div class="kanji-display" id="kanjiDisplay">水</div>
+            
+            <!-- Área de pergunta -->
+            <div class="question-area">
+                <div class="question-text" id="questionText">
+                    What does this kanji mean?
+                </div>
+                
+                <div class="options-grid">
+                    <button class="option-button" onclick="selectAnswer('water', true)">water</button>
+                    <button class="option-button" onclick="selectAnswer('fire', false)">fire</button>
+                    <button class="option-button" onclick="selectAnswer('earth', false)">earth</button>
+                    <button class="option-button" onclick="selectAnswer('wind', false)">wind</button>
+                </div>
+            </div>
+            
+            <!-- Controles de teste -->
+            <div class="test-controls">
+                <h3>🧪 Layout Test v1</h3>
+                <div class="state-buttons">
+                    <button class="state-button" onclick="changeState('normal')">Normal</button>
+                    <button class="state-button" onclick="changeState('success')">Success</button>
+                    <button class="state-button" onclick="changeState('failure')">Failure</button>
+                </div>
+                <div style="margin-top: 1rem; font-size: 0.9rem;">
+                    <div>Estado atual: <span id="currentState">normal</span></div>
+                    <div>Layout: Imagem lateral + Quiz direita</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Dialogue Box -->
+    <div class="dialogue-box" id="dialogueBox">
+        <div class="character-name" id="characterName">Yuki</div>
+        <div class="dialogue-text" id="dialogueText">Do you know your kanji?</div>
+    </div>
+
+    <script>
+        let currentState = 'normal';
+        
+        // Test kanji data
+        const testKanji = [
+            { kanji: '水', question: 'What does this kanji mean?', answers: ['water', 'fire', 'earth', 'wind'], correct: 0 },
+            { kanji: '人', question: 'What does this kanji mean?', answers: ['person', 'tree', 'house', 'book'], correct: 0 },
+            { kanji: '大', question: 'What is the kunyomi reading?', answers: ['おおきい', 'ちいさい', 'たかい', 'ひくい'], correct: 0 },
+            { kanji: '日', question: 'What does this kanji mean?', answers: ['day/sun', 'moon', 'star', 'cloud'], correct: 0 }
+        ];
+        
+        let currentKanjiIndex = 0;
+        
+        function changeState(newState) {
+            currentState = newState;
+            const panel = document.getElementById('characterPanel');
+            const stateSpan = document.getElementById('currentState');
+            
+            // Remove classes anteriores
+            panel.classList.remove('state-normal', 'state-success', 'state-failure');
+            
+            // Adiciona nova classe
+            panel.classList.add(`state-${newState}`);
+            stateSpan.textContent = newState;
+            
+            // Mostrar diálogo correspondente
+            showDialogue(newState);
+            
+            console.log(`Estado mudou para: ${newState}`);
+        }
+        
+        function showDialogue(state) {
+            const dialogueBox = document.getElementById('dialogueBox');
+            const characterName = document.getElementById('characterName');
+            const dialogueText = document.getElementById('dialogueText');
+            
+            let character, text;
+            
+            switch(state) {
+                case 'success':
+                    character = 'Yuki';
+                    text = 'やった！これが君の賞品だ！';
+                    break;
+                case 'failure':
+                    character = 'Sensei';
+                    text = '出て行け、この外人！';
+                    break;
+                default:
+                    character = 'Yuki';
+                    text = 'Do you know your kanji?';
+            }
+            
+            characterName.textContent = character;
+            dialogueText.textContent = text;
+            
+            // Mostrar dialogue box
+            dialogueBox.classList.add('active');
+            
+            // Esconder após 3 segundos
+            setTimeout(() => {
+                dialogueBox.classList.remove('active');
+            }, 3000);
+        }
+        
+        function selectAnswer(answer, isCorrect) {
+            console.log(`Resposta selecionada: ${answer}, Correta: ${isCorrect}`);
+            
+            if (isCorrect) {
+                changeState('success');
+                setTimeout(() => nextKanji(), 2000);
+            } else {
+                changeState('failure');
+                setTimeout(() => nextKanji(), 2000);
+            }
+        }
+        
+        function nextKanji() {
+            currentKanjiIndex = (currentKanjiIndex + 1) % testKanji.length;
+            const kanji = testKanji[currentKanjiIndex];
+            
+            document.getElementById('kanjiDisplay').textContent = kanji.kanji;
+            document.getElementById('questionText').textContent = kanji.question;
+            
+            const buttons = document.querySelectorAll('.option-button');
+            buttons.forEach((btn, index) => {
+                btn.textContent = kanji.answers[index];
+                btn.onclick = () => selectAnswer(kanji.answers[index], index === kanji.correct);
+            });
+            
+            // Voltar ao estado normal
+            setTimeout(() => changeState('normal'), 500);
+        }
+        
+        // Inicializar
+        console.log('🧪 Kanji Quest v1 Layout Test carregado');
+        console.log('- Layout: Imagem lateral (40%) + Quiz (60%)');
+        console.log('- Estados: normal, success, failure');
+        console.log('- Responsive: Mobile muda para layout vertical');
+        
+        // Mostrar diálogo inicial após 1 segundo
+        setTimeout(() => showDialogue('normal'), 1000);
+    </script>
+</body>
+</html>

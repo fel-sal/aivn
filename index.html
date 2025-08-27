@@ -3,57 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kanji Quest - Working Version</title>
+    <title>Kanji Quest v1 - Complete Game</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        /* Layout principal: 40% imagem | 60% jogo */
+        .main-layout {
             display: flex;
-            align-items: center;
-            justify-content: center;
+            height: 100vh;
+            width: 100vw;
+            gap: 20px;
+            padding: 20px;
         }
-        
-        .game-container {
-            text-align: center;
+
+        /* Container da moldura harmonizada */
+        .character-frame {
+            flex: 0 0 calc(40% - 30px);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* Moldura com cores harmonizadas */
+        .frame-border {
             background: rgba(255, 255, 255, 0.95);
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
-            width: 100%;
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            height: 100%;
+            position: relative;
         }
-        
+
+        /* Moldura interna */
+        .frame-inner {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.9) 0%, 
+                rgba(248, 249, 250, 0.9) 50%, 
+                rgba(255, 255, 255, 0.9) 100%);
+            padding: 8px;
+            border-radius: 17px;
+            height: 100%;
+            box-shadow: 
+                inset 0 2px 4px rgba(0, 0, 0, 0.05),
+                inset 0 -1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        /* Área da imagem */
+        .character-display {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Imagem dos personagens */
+        .character-image {
+            width: 100%;
+            height: 100%;
+            background-size: contain;
+            background-position: center center;
+            background-repeat: no-repeat;
+            transition: background-image 0.8s ease-in-out;
+            position: relative;
+        }
+
+        /* Estados com as imagens v1 */
+        .character-image.state-normal {
+            background-image: url('assets/images/bg-normal-v1.jpg');
+        }
+
+        .character-image.state-success {
+            background-image: url('assets/images/bg-success-v1.jpg');
+        }
+
+        .character-image.state-failure {
+            background-image: url('assets/images/bg-failure-v1.jpg');
+        }
+
+        /* Etiqueta da moldura */
+        .frame-label {
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            color: #2c3e50;
+            padding: 8px 20px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            z-index: 10;
+        }
+
+        /* Área do jogo */
+        .game-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Kanji display */
+        .kanji-display {
+            font-size: 10rem;
+            font-weight: 900;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            transition: all 0.5s ease;
+        }
+
+        /* Tela inicial */
+        .start-screen {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            max-width: 550px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
         .game-title {
             font-size: 3rem;
             color: #2c3e50;
             margin-bottom: 1rem;
-        }
-        
-        .kanji-display {
-            font-size: 8rem;
-            font-weight: bold;
-            color: #2c3e50;
-            margin: 2rem 0;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
-        
-        .question-text {
+
+        .game-subtitle {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+        }
+
+        .round-selection h2 {
             font-size: 1.5rem;
-            margin-bottom: 2rem;
-            color: #2c3e50;
+            color: #34495e;
+            margin-bottom: 1.5rem;
         }
-        
-        .options-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+
+        .round-buttons {
+            display: flex;
+            flex-direction: column;
             gap: 1rem;
-            margin-bottom: 2rem;
+            align-items: center;
         }
-        
-        .option-button, .round-select, .next-btn {
+
+        .round-select {
             padding: 1rem 2rem;
             border: 3px solid #3498db;
             background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
@@ -63,151 +188,379 @@
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
+            min-width: 200px;
             box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
         }
-        
-        .option-button:hover, .round-select:hover, .next-btn:hover {
+
+        .round-select:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
         }
-        
-        .correct {
-            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%) !important;
-            border-color: #27ae60 !important;
+
+        /* Área de pergunta */
+        .question-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            max-width: 550px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
-        
-        .wrong {
-            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%) !important;
-            border-color: #e74c3c !important;
+
+        .question-text {
+            font-size: 1.6rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+            font-weight: 600;
         }
-        
-        .score-panel {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 1rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin-bottom: 1.5rem;
         }
-        
-        .round-buttons {
+
+        .option-button {
+            padding: 1.2rem 1.5rem;
+            border: 3px solid #3498db;
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            color: white;
+            border-radius: 18px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(52, 152, 219, 0.3);
+            min-height: 60px;
             display: flex;
-            flex-direction: column;
-            gap: 1rem;
             align-items: center;
-            margin-top: 2rem;
+            justify-content: center;
         }
-        
+
+        .option-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+        }
+
+        .option-button.correct {
+            background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+            border-color: #00b894;
+        }
+
+        .option-button.wrong {
+            background: linear-gradient(135deg, #e17055 0%, #e74c3c 100%);
+            border-color: #e17055;
+        }
+
+        /* Score panel */
+        .score-panel {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            min-width: 160px;
+            text-align: center;
+        }
+
+        .score-item {
+            margin: 0.5rem 0;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        /* Results screen */
+        .results-screen {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .results-stats {
+            margin: 2rem 0;
+        }
+
+        .stat {
+            display: flex;
+            justify-content: space-between;
+            margin: 1rem 0;
+            font-size: 1.1rem;
+        }
+
+        .stat-label {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .stat-value {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .play-again-btn {
+            padding: 1rem 2rem;
+            border: none;
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            color: white;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .play-again-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* JRPG Dialogue harmonizado */
+        .dialogue-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-bottom: none;
+            border-radius: 20px 20px 0 0;
+            margin: 0 25px;
+            min-height: 140px;
+            padding: 25px;
+            color: #2c3e50;
+            transform: translateY(100%);
+            transition: transform 0.6s ease-in-out;
+            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .dialogue-overlay.active {
+            transform: translateY(0);
+        }
+
+        .character-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #3498db;
+        }
+
+        .dialogue-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            font-family: 'Georgia', serif;
+            color: #2c3e50;
+        }
+
+        /* Responsive design */
         @media (max-width: 768px) {
+            .main-layout {
+                flex-direction: column;
+                padding: 15px;
+                gap: 15px;
+            }
+            
+            .character-frame {
+                flex: 0 0 45%;
+            }
+            
+            .frame-border {
+                padding: 10px;
+            }
+            
+            .character-image {
+                background-position: center top;
+            }
+            
+            .game-panel {
+                flex: 1;
+                padding: 1.5rem;
+            }
+            
+            .kanji-display {
+                font-size: 7rem;
+            }
+            
             .options-grid {
                 grid-template-columns: 1fr;
+                gap: 1rem;
             }
-            .kanji-display {
-                font-size: 6rem;
+            
+            .start-screen, .question-container, .results-screen {
+                padding: 2rem;
             }
+        }
+
+        /* Animações */
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .game-panel > * {
+            animation: slideInRight 0.6s ease-out;
+        }
+
+        .character-frame {
+            animation: slideInLeft 0.6s ease-out;
         }
     </style>
 </head>
 <body>
-    <div class="game-container" id="gameContainer">
-        <h1 class="game-title">Kanji Quest</h1>
-        <p>Test your JLPT N5 knowledge!</p>
-        <h2>How many rounds do you want to play?</h2>
-        <div class="round-buttons">
-            <button class="round-select" onclick="startGame(5)">5 Rounds</button>
-            <button class="round-select" onclick="startGame(10)">10 Rounds</button>
-            <button class="round-select" onclick="startGame(20)">20 Rounds</button>
+    <div class="main-layout">
+        <!-- Moldura da personagem -->
+        <div class="character-frame">
+            <div class="frame-border">
+                <div class="frame-inner">
+                    <div class="character-display">
+                        <div class="character-image state-normal" id="characterImage">
+                            <!-- Background image here -->
+                        </div>
+                    </div>
+                </div>
+                <div class="frame-label" id="frameLabel">Yuki - Student</div>
+            </div>
         </div>
+        
+        <!-- Painel do jogo -->
+        <div class="game-panel" id="gamePanel">
+            <!-- Initial loading screen -->
+            <div class="start-screen">
+                <h1 class="game-title">Kanji Quest</h1>
+                <p class="game-subtitle">Test your JLPT N5 knowledge!</p>
+                <div class="round-selection">
+                    <h2>How many rounds do you want to play?</h2>
+                    <div class="round-buttons">
+                        <button class="round-select" onclick="startGame(5)">5 Rounds</button>
+                        <button class="round-select" onclick="startGame(10)">10 Rounds</button>
+                        <button class="round-select" onclick="startGame(20)">20 Rounds</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Dialogue overlay -->
+    <div class="dialogue-overlay" id="dialogueBox">
+        <div class="character-name" id="characterName">Yuki</div>
+        <div class="dialogue-text" id="dialogueText">Welcome to Kanji Quest!</div>
     </div>
 
     <script>
-        // Simple kanji database
-        const kanjiData = [
-            {
-                kanji: "一",
-                meanings: ["one", "first"],
-                kunyomi: ["ひと", "ひとつ"],
-                onyomi: ["イチ", "イツ"]
-            },
-            {
-                kanji: "人",
-                meanings: ["person", "people"],
-                kunyomi: ["ひと"],
-                onyomi: ["ジン", "ニン"]
-            },
-            {
-                kanji: "日",
-                meanings: ["day", "sun"],
-                kunyomi: ["ひ", "か"],
-                onyomi: ["ニチ", "ジツ"]
-            },
-            {
-                kanji: "水",
-                meanings: ["water"],
-                kunyomi: ["みず"],
-                onyomi: ["スイ"]
-            },
-            {
-                kanji: "大",
-                meanings: ["big", "large"],
-                kunyomi: ["おお", "おおきい"],
-                onyomi: ["ダイ", "タイ"]
-            },
-            {
-                kanji: "小",
-                meanings: ["small", "little"],
-                kunyomi: ["ちい", "こ"],
-                onyomi: ["ショウ"]
-            },
-            {
-                kanji: "中",
-                meanings: ["middle", "inside"],
-                kunyomi: ["なか"],
-                onyomi: ["チュウ"]
-            },
-            {
-                kanji: "本",
-                meanings: ["book", "origin"],
-                kunyomi: ["もと"],
-                onyomi: ["ホン"]
-            }
-        ];
-        
+        // Game state
         let currentRound = 0;
         let totalRounds = 0;
         let score = 0;
+        let correctAnswers = 0;
         let currentKanji = null;
         let currentQuestion = null;
-        
+        let gameState = 'normal';
+
+        // Enhanced kanji database
+        const kanjiData = [
+            {
+                kanji: "一", meanings: ["one", "first"], kunyomi: ["ひと", "ひとつ"], onyomi: ["イチ", "イツ"]
+            },
+            {
+                kanji: "二", meanings: ["two"], kunyomi: ["ふた", "ふたつ"], onyomi: ["ニ"]
+            },
+            {
+                kanji: "三", meanings: ["three"], kunyomi: ["み", "みつ", "みっつ"], onyomi: ["サン"]
+            },
+            {
+                kanji: "四", meanings: ["four"], kunyomi: ["よ", "よん", "よつ"], onyomi: ["シ"]
+            },
+            {
+                kanji: "五", meanings: ["five"], kunyomi: ["いつ", "いつつ"], onyomi: ["ゴ"]
+            },
+            {
+                kanji: "人", meanings: ["person", "people"], kunyomi: ["ひと"], onyomi: ["ジン", "ニン"]
+            },
+            {
+                kanji: "日", meanings: ["day", "sun"], kunyomi: ["ひ", "か"], onyomi: ["ニチ", "ジツ"]
+            },
+            {
+                kanji: "月", meanings: ["month", "moon"], kunyomi: ["つき"], onyomi: ["ゲツ", "ガツ"]
+            },
+            {
+                kanji: "水", meanings: ["water"], kunyomi: ["みず"], onyomi: ["スイ"]
+            },
+            {
+                kanji: "火", meanings: ["fire"], kunyomi: ["ひ"], onyomi: ["カ"]
+            },
+            {
+                kanji: "木", meanings: ["tree", "wood"], kunyomi: ["き"], onyomi: ["モク", "ボク"]
+            },
+            {
+                kanji: "金", meanings: ["gold", "money"], kunyomi: ["かね"], onyomi: ["キン"]
+            },
+            {
+                kanji: "土", meanings: ["earth", "soil"], kunyomi: ["つち"], onyomi: ["ド", "ト"]
+            },
+            {
+                kanji: "大", meanings: ["big", "large"], kunyomi: ["おお", "おおきい"], onyomi: ["ダイ", "タイ"]
+            },
+            {
+                kanji: "小", meanings: ["small", "little"], kunyomi: ["ちい", "こ"], onyomi: ["ショウ"]
+            },
+            {
+                kanji: "中", meanings: ["middle", "inside"], kunyomi: ["なか"], onyomi: ["チュウ"]
+            },
+            {
+                kanji: "上", meanings: ["up", "above"], kunyomi: ["うえ", "あ"], onyomi: ["ジョウ"]
+            },
+            {
+                kanji: "下", meanings: ["down", "below"], kunyomi: ["した", "しも", "お"], onyomi: ["カ", "ゲ"]
+            },
+            {
+                kanji: "本", meanings: ["book", "origin"], kunyomi: ["もと"], onyomi: ["ホン"]
+            },
+            {
+                kanji: "年", meanings: ["year"], kunyomi: ["とし"], onyomi: ["ネン"]
+            }
+        ];
+
         function startGame(rounds) {
-            console.log('Starting game with', rounds, 'rounds');
             totalRounds = rounds;
             currentRound = 0;
             score = 0;
-            showDialogue('Do you know your kanji?', nextRound);
+            correctAnswers = 0;
+            
+            showDialogue('girl', 'Do you know your kanji?', () => {
+                nextRound();
+            });
         }
-        
-        function showDialogue(text, callback) {
-            const container = document.getElementById('gameContainer');
-            container.innerHTML = `
-                <div style="text-align: center; padding: 3rem;">
-                    <div style="background: #2c3e50; color: white; padding: 2rem; border-radius: 15px; margin-bottom: 2rem;">
-                        <div style="font-size: 1.2rem; margin-bottom: 1rem;">Yuki:</div>
-                        <div style="font-size: 1.5rem;">${text}</div>
-                    </div>
-                    <button class="next-btn" onclick="continueGame()">Continue</button>
-                </div>
-            `;
-            window.currentCallback = callback;
-        }
-        
-        function continueGame() {
-            if (window.currentCallback) {
-                window.currentCallback();
-            }
-        }
-        
+
         function nextRound() {
             currentRound++;
             
@@ -215,7 +568,7 @@
                 endGame();
                 return;
             }
-            
+
             // Select random kanji and question type
             currentKanji = kanjiData[Math.floor(Math.random() * kanjiData.length)];
             const questionTypes = ['meaning', 'kunyomi', 'onyomi'];
@@ -224,25 +577,24 @@
             currentQuestion = generateQuestion(currentKanji, questionType);
             displayQuestion();
         }
-        
+
         function generateQuestion(kanji, type) {
             let correctAnswer, questionText, distractors;
             
             if (type === 'meaning') {
                 correctAnswer = kanji.meanings[0];
                 questionText = 'What does this kanji mean?';
-                distractors = ['tree', 'fire', 'mountain'].filter(x => x !== correctAnswer);
+                distractors = getRandomMeanings().filter(x => x !== correctAnswer);
             } else if (type === 'kunyomi') {
                 correctAnswer = kanji.kunyomi[0];
                 questionText = 'What is the kunyomi reading?';
-                distractors = ['たか', 'やま', 'した'].filter(x => x !== correctAnswer);
+                distractors = getRandomReadings('kunyomi').filter(x => x !== correctAnswer);
             } else {
                 correctAnswer = kanji.onyomi[0];
                 questionText = 'What is the onyomi reading?';
-                distractors = ['コウ', 'セン', 'トウ'].filter(x => x !== correctAnswer);
+                distractors = getRandomReadings('onyomi').filter(x => x !== correctAnswer);
             }
             
-            // Create 4 options
             const options = [correctAnswer, ...distractors.slice(0, 3)];
             options.sort(() => Math.random() - 0.5);
             
@@ -252,87 +604,164 @@
                 options: options.map(opt => ({ text: opt, isCorrect: opt === correctAnswer }))
             };
         }
-        
+
+        function getRandomMeanings() {
+            const allMeanings = kanjiData.flatMap(k => k.meanings);
+            return allMeanings.sort(() => 0.5 - Math.random()).slice(0, 5);
+        }
+
+        function getRandomReadings(type) {
+            const allReadings = kanjiData.flatMap(k => k[type]);
+            return allReadings.sort(() => 0.5 - Math.random()).slice(0, 5);
+        }
+
         function displayQuestion() {
-            const container = document.getElementById('gameContainer');
-            container.innerHTML = `
+            updateGameState();
+            
+            const gamePanel = document.getElementById('gamePanel');
+            gamePanel.innerHTML = `
                 <div class="score-panel">
-                    <div>Score: ${score}</div>
-                    <div>Round: ${currentRound}/${totalRounds}</div>
+                    <div class="score-item"><strong>Score:</strong> ${score}</div>
+                    <div class="score-item"><strong>Round:</strong> ${currentRound}/${totalRounds}</div>
+                    <div class="score-item"><strong>Accuracy:</strong> ${Math.round((correctAnswers/Math.max(currentRound-1,1))*100)}%</div>
                 </div>
                 
                 <div class="kanji-display">${currentQuestion.kanji}</div>
-                <div class="question-text">${currentQuestion.questionText}</div>
                 
-                <div class="options-grid">
-                    ${currentQuestion.options.map((option, index) => `
-                        <button class="option-button" onclick="selectAnswer(${index}, '${option.text}', ${option.isCorrect})">
-                            ${option.text}
-                        </button>
-                    `).join('')}
+                <div class="question-container">
+                    <div class="question-text">${currentQuestion.questionText}</div>
+                    <div class="options-grid">
+                        ${currentQuestion.options.map((option, index) => `
+                            <button class="option-button" onclick="selectAnswer(${index}, ${option.isCorrect})">
+                                ${option.text}
+                            </button>
+                        `).join('')}
+                    </div>
                 </div>
             `;
         }
-        
-        function selectAnswer(index, text, isCorrect) {
+
+        function selectAnswer(index, isCorrect) {
             const buttons = document.querySelectorAll('.option-button');
             buttons.forEach(btn => btn.disabled = true);
             
             if (isCorrect) {
                 buttons[index].classList.add('correct');
                 score += 100;
+                correctAnswers++;
                 setTimeout(() => {
-                    alert('Correct! +100 points');
-                    nextRound();
+                    changeGameState('success');
+                    setTimeout(nextRound, 2000);
                 }, 1000);
             } else {
                 buttons[index].classList.add('wrong');
-                // Highlight correct answer
                 buttons.forEach((btn, i) => {
                     if (currentQuestion.options[i].isCorrect) {
                         btn.classList.add('correct');
                     }
                 });
                 setTimeout(() => {
-                    alert('Wrong! The correct answer was highlighted.');
-                    nextRound();
-                }, 2000);
+                    changeGameState('failure');
+                    setTimeout(nextRound, 2000);
+                }, 1000);
             }
         }
-        
-        function endGame() {
-            const accuracy = (score / (totalRounds * 100)) * 100;
-            const container = document.getElementById('gameContainer');
+
+        function updateGameState() {
+            const accuracy = currentRound > 1 ? (correctAnswers / (currentRound - 1)) * 100 : 100;
             
-            let message, bgClass;
-            if (accuracy >= 70) {
-                message = 'やった！これが君の賞品だ！';
-                bgClass = 'success';
-            } else if (accuracy < 40) {
-                message = '出て行け、この外人！';
-                bgClass = 'failure';
+            if (accuracy >= 70 && currentRound > 2) {
+                gameState = 'success';
+            } else if (accuracy < 40 && currentRound > 3) {
+                gameState = 'failure';
             } else {
-                message = 'Good effort! Keep practicing!';
-                bgClass = 'normal';
+                gameState = 'normal';
             }
             
-            container.innerHTML = `
-                <h1>Game Complete!</h1>
-                <div style="background: #2c3e50; color: white; padding: 2rem; border-radius: 15px; margin: 2rem 0;">
-                    <div style="font-size: 1.2rem; margin-bottom: 1rem;">
-                        ${accuracy >= 70 ? 'Yuki' : accuracy < 40 ? 'Sensei' : 'Yuki'}:
+            changeGameState(gameState);
+        }
+
+        function changeGameState(newState) {
+            gameState = newState;
+            const image = document.getElementById('characterImage');
+            const frameLabel = document.getElementById('frameLabel');
+            
+            image.classList.remove('state-normal', 'state-success', 'state-failure');
+            image.classList.add(`state-${newState}`);
+            
+            switch(newState) {
+                case 'success':
+                    frameLabel.textContent = 'Yuki - Celebrating!';
+                    break;
+                case 'failure':
+                    frameLabel.textContent = 'Sensei - Serious';
+                    break;
+                default:
+                    frameLabel.textContent = 'Yuki - Student';
+            }
+        }
+
+        function endGame() {
+            const accuracy = (correctAnswers / totalRounds) * 100;
+            
+            if (accuracy >= 70) {
+                changeGameState('success');
+                showDialogue('girl', 'やった！これが君の賞品だ！', showResults);
+            } else if (accuracy < 40) {
+                changeGameState('failure');
+                showDialogue('man', '出て行け、この外人！', showResults);
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            const accuracy = (correctAnswers / totalRounds) * 100;
+            const gamePanel = document.getElementById('gamePanel');
+            
+            gamePanel.innerHTML = `
+                <div class="results-screen">
+                    <h1>Game Complete!</h1>
+                    <div class="results-stats">
+                        <div class="stat">
+                            <span class="stat-label">Final Score:</span>
+                            <span class="stat-value">${score}</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Correct Answers:</span>
+                            <span class="stat-value">${correctAnswers}/${totalRounds}</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Accuracy:</span>
+                            <span class="stat-value">${accuracy.toFixed(1)}%</span>
+                        </div>
                     </div>
-                    <div style="font-size: 1.5rem;">${message}</div>
+                    <button class="play-again-btn" onclick="location.reload()">Play Again</button>
                 </div>
-                <div style="margin: 2rem 0;">
-                    <div><strong>Final Score:</strong> ${score}</div>
-                    <div><strong>Accuracy:</strong> ${accuracy.toFixed(1)}%</div>
-                </div>
-                <button class="next-btn" onclick="location.reload()">Play Again</button>
             `;
         }
-        
-        console.log('Working version loaded successfully');
+
+        function showDialogue(character, text, onComplete) {
+            const dialogueBox = document.getElementById('dialogueBox');
+            const characterName = document.getElementById('characterName');
+            const dialogueText = document.getElementById('dialogueText');
+            
+            characterName.textContent = character === 'girl' ? 'Yuki' : 'Sensei';
+            dialogueText.textContent = text;
+            
+            dialogueBox.classList.add('active');
+            
+            setTimeout(() => {
+                dialogueBox.classList.remove('active');
+                if (onComplete) setTimeout(onComplete, 500);
+            }, 3000);
+        }
+
+        // Initialize
+        console.log('🎮 Kanji Quest v1 - Complete Game Loaded');
+        console.log('🖼️ Layout: Harmonized frame + game panel');
+        console.log('🎨 Images: Optimized 768x1080px portraits');
+        console.log('📱 Responsive: Mobile-friendly design');
     </script>
 </body>
 </html>

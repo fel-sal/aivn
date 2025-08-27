@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanji Quest - Working Version</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .game-container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+        }
+        
+        .game-title {
+            font-size: 3rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .kanji-display {
+            font-size: 8rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 2rem 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .question-text {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+        
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .option-button, .round-select, .next-btn {
+            padding: 1rem 2rem;
+            border: 3px solid #3498db;
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            color: white;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .option-button:hover, .round-select:hover, .next-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+        
+        .correct {
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%) !important;
+            border-color: #27ae60 !important;
+        }
+        
+        .wrong {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%) !important;
+            border-color: #e74c3c !important;
+        }
+        
+        .score-panel {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .round-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+            .kanji-display {
+                font-size: 6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container" id="gameContainer">
+        <h1 class="game-title">Kanji Quest</h1>
+        <p>Test your JLPT N5 knowledge!</p>
+        <h2>How many rounds do you want to play?</h2>
+        <div class="round-buttons">
+            <button class="round-select" onclick="startGame(5)">5 Rounds</button>
+            <button class="round-select" onclick="startGame(10)">10 Rounds</button>
+            <button class="round-select" onclick="startGame(20)">20 Rounds</button>
+        </div>
+    </div>
+
+    <script>
+        // Simple kanji database
+        const kanjiData = [
+            {
+                kanji: "一",
+                meanings: ["one", "first"],
+                kunyomi: ["ひと", "ひとつ"],
+                onyomi: ["イチ", "イツ"]
+            },
+            {
+                kanji: "人",
+                meanings: ["person", "people"],
+                kunyomi: ["ひと"],
+                onyomi: ["ジン", "ニン"]
+            },
+            {
+                kanji: "日",
+                meanings: ["day", "sun"],
+                kunyomi: ["ひ", "か"],
+                onyomi: ["ニチ", "ジツ"]
+            },
+            {
+                kanji: "水",
+                meanings: ["water"],
+                kunyomi: ["みず"],
+                onyomi: ["スイ"]
+            },
+            {
+                kanji: "大",
+                meanings: ["big", "large"],
+                kunyomi: ["おお", "おおきい"],
+                onyomi: ["ダイ", "タイ"]
+            },
+            {
+                kanji: "小",
+                meanings: ["small", "little"],
+                kunyomi: ["ちい", "こ"],
+                onyomi: ["ショウ"]
+            },
+            {
+                kanji: "中",
+                meanings: ["middle", "inside"],
+                kunyomi: ["なか"],
+                onyomi: ["チュウ"]
+            },
+            {
+                kanji: "本",
+                meanings: ["book", "origin"],
+                kunyomi: ["もと"],
+                onyomi: ["ホン"]
+            }
+        ];
+        
+        let currentRound = 0;
+        let totalRounds = 0;
+        let score = 0;
+        let currentKanji = null;
+        let currentQuestion = null;
+        
+        function startGame(rounds) {
+            console.log('Starting game with', rounds, 'rounds');
+            totalRounds = rounds;
+            currentRound = 0;
+            score = 0;
+            showDialogue('Do you know your kanji?', nextRound);
+        }
+        
+        function showDialogue(text, callback) {
+            const container = document.getElementById('gameContainer');
+            container.innerHTML = `
+                <div style="text-align: center; padding: 3rem;">
+                    <div style="background: #2c3e50; color: white; padding: 2rem; border-radius: 15px; margin-bottom: 2rem;">
+                        <div style="font-size: 1.2rem; margin-bottom: 1rem;">Yuki:</div>
+                        <div style="font-size: 1.5rem;">${text}</div>
+                    </div>
+                    <button class="next-btn" onclick="continueGame()">Continue</button>
+                </div>
+            `;
+            window.currentCallback = callback;
+        }
+        
+        function continueGame() {
+            if (window.currentCallback) {
+                window.currentCallback();
+            }
+        }
+        
+        function nextRound() {
+            currentRound++;
+            
+            if (currentRound > totalRounds) {
+                endGame();
+                return;
+            }
+            
+            // Select random kanji and question type
+            currentKanji = kanjiData[Math.floor(Math.random() * kanjiData.length)];
+            const questionTypes = ['meaning', 'kunyomi', 'onyomi'];
+            const questionType = questionTypes[Math.floor(Math.random() * questionTypes.length)];
+            
+            currentQuestion = generateQuestion(currentKanji, questionType);
+            displayQuestion();
+        }
+        
+        function generateQuestion(kanji, type) {
+            let correctAnswer, questionText, distractors;
+            
+            if (type === 'meaning') {
+                correctAnswer = kanji.meanings[0];
+                questionText = 'What does this kanji mean?';
+                distractors = ['tree', 'fire', 'mountain'].filter(x => x !== correctAnswer);
+            } else if (type === 'kunyomi') {
+                correctAnswer = kanji.kunyomi[0];
+                questionText = 'What is the kunyomi reading?';
+                distractors = ['たか', 'やま', 'した'].filter(x => x !== correctAnswer);
+            } else {
+                correctAnswer = kanji.onyomi[0];
+                questionText = 'What is the onyomi reading?';
+                distractors = ['コウ', 'セン', 'トウ'].filter(x => x !== correctAnswer);
+            }
+            
+            // Create 4 options
+            const options = [correctAnswer, ...distractors.slice(0, 3)];
+            options.sort(() => Math.random() - 0.5);
+            
+            return {
+                kanji: kanji.kanji,
+                questionText,
+                options: options.map(opt => ({ text: opt, isCorrect: opt === correctAnswer }))
+            };
+        }
+        
+        function displayQuestion() {
+            const container = document.getElementById('gameContainer');
+            container.innerHTML = `
+                <div class="score-panel">
+                    <div>Score: ${score}</div>
+                    <div>Round: ${currentRound}/${totalRounds}</div>
+                </div>
+                
+                <div class="kanji-display">${currentQuestion.kanji}</div>
+                <div class="question-text">${currentQuestion.questionText}</div>
+                
+                <div class="options-grid">
+                    ${currentQuestion.options.map((option, index) => `
+                        <button class="option-button" onclick="selectAnswer(${index}, '${option.text}', ${option.isCorrect})">
+                            ${option.text}
+                        </button>
+                    `).join('')}
+                </div>
+            `;
+        }
+        
+        function selectAnswer(index, text, isCorrect) {
+            const buttons = document.querySelectorAll('.option-button');
+            buttons.forEach(btn => btn.disabled = true);
+            
+            if (isCorrect) {
+                buttons[index].classList.add('correct');
+                score += 100;
+                setTimeout(() => {
+                    alert('Correct! +100 points');
+                    nextRound();
+                }, 1000);
+            } else {
+                buttons[index].classList.add('wrong');
+                // Highlight correct answer
+                buttons.forEach((btn, i) => {
+                    if (currentQuestion.options[i].isCorrect) {
+                        btn.classList.add('correct');
+                    }
+                });
+                setTimeout(() => {
+                    alert('Wrong! The correct answer was highlighted.');
+                    nextRound();
+                }, 2000);
+            }
+        }
+        
+        function endGame() {
+            const accuracy = (score / (totalRounds * 100)) * 100;
+            const container = document.getElementById('gameContainer');
+            
+            let message, bgClass;
+            if (accuracy >= 70) {
+                message = 'やった！これが君の賞品だ！';
+                bgClass = 'success';
+            } else if (accuracy < 40) {
+                message = '出て行け、この外人！';
+                bgClass = 'failure';
+            } else {
+                message = 'Good effort! Keep practicing!';
+                bgClass = 'normal';
+            }
+            
+            container.innerHTML = `
+                <h1>Game Complete!</h1>
+                <div style="background: #2c3e50; color: white; padding: 2rem; border-radius: 15px; margin: 2rem 0;">
+                    <div style="font-size: 1.2rem; margin-bottom: 1rem;">
+                        ${accuracy >= 70 ? 'Yuki' : accuracy < 40 ? 'Sensei' : 'Yuki'}:
+                    </div>
+                    <div style="font-size: 1.5rem;">${message}</div>
+                </div>
+                <div style="margin: 2rem 0;">
+                    <div><strong>Final Score:</strong> ${score}</div>
+                    <div><strong>Accuracy:</strong> ${accuracy.toFixed(1)}%</div>
+                </div>
+                <button class="next-btn" onclick="location.reload()">Play Again</button>
+            `;
+        }
+        
+        console.log('Working version loaded successfully');
+    </script>
+</body>
+</html>
